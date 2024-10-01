@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .nav{
+            box-sizing: border-box;
+            background-color: antiquewhite;
+            display: flex;
+            justify-content:space-around;
+        }
+        .logo{
+            padding: 15px;
+        }
+        .logo h1{
+            color: blue;
+        }
+        .logo span{
+            color: rgb(255, 0, 0);
+        }
+        .nav-input{
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .input:hover{
+            border: 3px solid orange;
+        }
+        .input{
+            height: 60%;
+            width: 80%;
+            font-size: larger;
+            border: 0cap;
+        }
+        .icons ul li{
+            list-style: none;
+            display: inline;
+            font-size: xx-large;
+           margin-right: 25px;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .icons{
+            margin-top: 15px;
+        }
+        
+        .icons a{
+            color: rgb(0, 0, 0);
+            
+        }
+        .icons li a{
+            text-decoration: none;
+        }
+        .icons :hover{
+            color: rgb(56, 190, 190);
+        }
+        .icon a{
+            display: none;
+        }
+        .cards:hover{
+            transition: 0.5s;
+            
+        }
+        @media  (max-width:400px){
+        .nav{
+            box-sizing: border-box;
+            overflow: hidden;
+            background-color:antiquewhite;
+            position: relative;
+        }
+        .nav-input{
+            display: none;
+        }
+        .icons ul li{
+            font-size: 20px;
+            margin-left: 15px;
+        }
+        .icons{
+            font-weight: bold;
+        }
+        #about{
+            margin-left: -9px;
+        }
+
+        }
+        .sec-2{
+            box-sizing: border-box;
+            width: 100%;
+            margin-top: 20px;
+        }
+        @media (max-width:400px){
+            .scroll{
+                height: 150px;
+            }
+            .scroll img{
+                height: 100%;
+            }
+        }
+        .box{
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            
+        }
+        .box img{
+            height: 300px;
+            width: 250px;
+            border-radius: 20px;
+        }
+        .cards:hover{
+            border-radius: 20px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            background-color: antiquewhite;
+            color: rgb(0, 0, 0);
+        }
+        .cards h3:hover{
+            color: black;
+        }
+        .cards{
+            width: 250px;
+        }
+        .cards h1{
+            color: green;
+        }
+        .text{
+            box-sizing: border-box;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .sec-3{
+            display: flex;
+            justify-content:center;
+            border: px solid;
+            box-sizing: border-box;
+        }
+        @media(max-width:400px){
+            .box{
+                margin-top: 20px;
+                display:flex ;
+                display: grid;
+                grid-template-columns: repeat(2,135px);
+                grid-template-rows: repeat(3,227px);
+                height: 850px;
+                
+                
+            }
+            .cards img{
+                width: 120px;
+                height: 150px;
+                margin-top: 20px;
+            }
+            .cards h1{
+                font-size: 20px;
+                color: green;
+            }
+            .cards{
+                width: 165px;
+                height: 120%;
+            }
+           
+            .text{
+                font-size: xx-small;
+                text-align: center;
+            }
+        }
+        .foot{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            background-color: black;
+            color: aliceblue;
+            height: 300px;
+            width: 100%;
+            border: 1px solid;
+        }
+        .parts{
+            text-align: center;
+            cursor: pointer;
+        }
+        .parts h1,h3:hover{
+            color: aquamarine;
+        }
+        @media (max-width:500px){
+            .sec-3{
+                width: 90%;
+            }
+            .box{
+                display: grid;
+                grid-template-columns: repeat(2,160px);
+                grid-template-rows: repeat(3,270px);
+                height: 950px;
+                text-align: center;
+                gap: 40px;
+                overflow-x: none;
+                margin-left: 30px;
+            }
+            .cards img{
+                width: 150px;
+                height: 160px;
+                margin-top: 20px;
+            }
+            .cards h1{
+                font-size: 20px;
+                color: green;
+            }
+            .cards{
+                width: 100%;
+            }
+            .cards h1{
+                text-align: center;
+            }
+            .cards h3{
+                text-align: center;
+            }
+        }
+        @media (max-width:500px){
+            .foot{
+                font-size: 10px;
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                grid-template-rows: repeat(2,1fr);
+                gap: 20px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <h1>Shop<span>Key</span></h1>
+        </div>
+        <div class="nav-input">
+            <input type="text" class="input" placeholder="Serach for your products">
+        </div>
+        <div class="icons">
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href=".html">Contact</a></li>
+                <li id="about"><a href=".html">About</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="sec-2">
+            <marquee behavior="scroll" scrollamount="50">
+                <div class="scroll">
+                    <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/e7554fcdb3042316.jpg?q=20" >
+                    <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/50ba00cc44d3fa70.jpg?q=20">
+                    <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/614c92ccb25152fe.jpg?q=20">
+                    <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/fb212593cc44b077.jpg?q=20">
+                    <img src="https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/2152c9d0afe3352d.jpg?q=20">
+                </div>
+            </marquee>
+    </div>
+    <div class="text">
+        <h1>Clothes For Men And  Women</h1>
+    </div>
+    <div class="sec-3">
+
+        <div class="box">
+            <div class="cards" onclick="myshirt()">
+                <img class="_53J4C-"  alt src="https://rukminim2.flixcart.com/image/612/612/kihqz680-0/shirt/g/2/y/m-dark-blue-peter-field-original-imafy9npjdgmknfz.jpeg?q=70">
+                <h3>Mens black shirt  </h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 300</h1>
+            </div>
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/raincoat/v/p/m/xl-zek-new-multi-rcoat-xl-zeki-original-imah2ss5sdavgtp4.jpeg?q=70">
+                <h3>Mens Womens Pink Raincoat </h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 800</h1>
+            </div>
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/q/m/c/l-pf0050-primefield-original-imagpd3prahgts8z.jpeg?q=70">
+                <h3>Mens Colourful Shirt </h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 600</h1>
+            </div>
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/kurta/s/b/4/m-women-kurta-renuka-creations-original-imagv3t6fpbz3dht.jpeg?q=70">
+                <h3> Womens Pink kurtas </h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 1000</h1>
+            </div>
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/c/j/w/l-wg-pant-901-sonava-club-original-imagrxcnhgxmhznc.jpeg?q=70">
+                <h3> Womens SkyBlue kurtas </h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 800</h1>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="text">
+        <h1>Accessories For Men</h1>
+    </div>
+    <div class="sec-3">
+
+        <div class="box">
+            <div class="cards">
+                <img loading="eager" class="DByuf4" alt="EKSA E900PRONCMY Wired Gaming Headset" src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/y/v/e/e900proncmy-eksa-original-imahyfp2phgqnkzk.jpeg?q=70">
+            <h3>Wired Gaming Headset</h3>
+            <h4>united colors of Benetton</h4>
+            <h1>RS 20,000</h1>
+        </div>
+        <div class="cards">
+            <img loading="eager" class="DByuf4 IZexXJ jLEJ7H" alt="Boult Z40 Pro with 100H Battery, Quad Mic ENC, Scratch Proof, Rubber Grip Design, 5.3v Bluetooth" src="https://rukminim2.flixcart.com/image/416/416/xif0q/headphone/x/4/9/-original-imagtr2nezygmu4f.jpeg?q=70&crop=false" srcset="https://rukminim2.flixcart.com/image/832/832/xif0q/headphone/x/4/9/-original-imagtr2nezygmu4f.jpeg?q=70&crop=false 2x, https://rukminim2.flixcart.com/image/416/416/xif0q/headphone/x/4/9/-original-imagtr2nezygmu4f.jpeg?q=70&crop=false 1x">
+            <h3>Additional featured Earbuds</h3>
+            <h4>united colors of Benetton</h4>
+            <h1>Rs 15,000</h1>
+        </div>
+        <div class="cards">
+            <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/j/z/a/1-aero-aw-a9-4-slv-aeropostale-men-original-imaghr2d4ha4qzqw.jpeg?q=70">
+            <h3>Mens Simple And Smooth Watch</h3>
+            <h4>united colors of Benetton</h4>
+            <h1>Rs 8,000</h1>
+        </div>
+        <div class="cards">
+            <img loading="eager" class="DByuf4" alt="OnePlus Nord Buds 3 Pro Truly Wireless Earbuds with 49dB Active Noise Cancellation Bluetooth" src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/l/x/x/nord-buds-3-pro-oneplus-original-imah2ax8jjdyxyv3.jpeg?q=70">
+            <h3>Wiredless Gaming Earbuds</h3>
+            <h4>united colors of Benetton</h4>
+            <h1>Rs 5,000</h1>
+        </div>
+        <div class="cards">
+            <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/u/r/h/-original-imagyxxfgz52vzqn.jpeg?q=70">
+            <h3>Smart Men Smart Watches</h3>
+            <h4>united colors of Benetton</h4>
+            <h1>Rs 12,000</h1>
+        </div>
+    </div>
+</div>
+    <br>
+    <br>
+        <footer>
+            <div class="foot">
+                <div class="parts">
+                    <h1><u>Online Store</u></h1>
+                    <br>
+                    <h3 onclick="clothes()">Men clothes</h3>
+                    <br>
+                    <h3 onclick="womenclothes()">Womens clothes</h3>
+                    <br>
+                    <h3 onclick="access()">Men Accessories</h3>
+                    <br>
+                    <h3 onclick="womenaccess()">Women Accessories</h3>
+    
+                </div>
+                <div class="parts">
+                    <h1><u>Helpfull Link</u></h1>
+                    <br>
+                    <h3>Home</h3>
+                    <br>
+                    <h3>Contact</h3>
+                    <br>
+                    <h3>About</h3>
+
+                </div>
+                <div class="parts">
+                    <h1><u>Partners</u></h1>
+                    <br>
+                    <h3>Zara</h3>
+                    <br>
+                    <h3>Pantaloons</h3>
+                    <br>
+                    <h3>Levis</h3>
+                    <br>
+                    <h3>Ubc</h3>
+                    <br>
+                    <h3>+ Many more</h3>
+                </div>
+                <div class="parts">
+                    <h1><u>Address</u></h1>
+                    <br>
+                    <h3>-----</h3>
+                    <br>
+                    <h3>------</h3>
+                    <br>
+                    <h3>-----</h3>
+                    <br>
+                    <h3>-----</h3>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+<script>
+    function myshirt(){
+        window.location.href="cards.html"
+    }
+    function access(){
+        window.location.href="Accessories.html"
+    }
+    function clothes(){
+        window.location.href="menclothes.html"
+    }
+    function womenclothes(){
+        window.location.href="womenclothes.html"
+    }
+    function womenaccess(){
+        window.location.href="womenAcc.html"
+    }
+
+</script>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .nav{
+            display: flex;
+            justify-content: space-between;
+            background-color: antiquewhite;
+            color: blue;
+        }
+        .nav span{
+            color: red;
+        }
+        .logo{
+            padding: 14px;
+        }
+        .nav-input{
+            width: 600px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-input input{
+            width: 100%;
+            height: 60%;
+            font-size: larger;
+        }
+        .icons{
+            display: flex;
+            padding: 10px;
+        }
+        .icons ul li{
+            display: inline;
+            font-size: xx-large;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .nav a{
+            color: black;
+            text-decoration: none;
+        }
+        #about{
+            margin-left: -px;
+        }
+        .icons :hover{
+            color: rgb(60, 140, 113);
+        }
+        @media(max-width:500px){
+            .nav-input{
+                display: none;
+            }
+            .icons ul{
+                display: grid;
+                grid-template-columns: repeat(2,100px);
+                grid-template-rows: repeat(2,)
+            }
+            .icons{
+                padding: 0px;
+            }
+            .icons a{
+                font-size: x-large;
+            }
+            .icons ul li{
+                padding: 0%;
+            }
+
+        }
+        .container{
+            height: 660px;
+            width: 100%;
+            border: px solid;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card{
+            height: 100%;
+            width: 60%;
+            border: px solid black;
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+        .left{
+            height: 100%;
+            width: 50%;
+            border: px solid;
+            display: flex;
+            justify-content: center;
+            background-color: antiquewhite;
+        }
+        .left img{
+            height: 90%;
+            width: 80%;
+        }
+        .right{
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        .right h1,h2,h3{
+            padding: 5px;
+        }
+        #shirt{
+            margin-top: 10px;
+            height: 100px;
+            width: 400px;
+            border: px solid;
+            display: flex;
+            justify-content: space-around;
+        }
+        #shirt img{
+            width: 80px;
+        }
+        #addtocart button{
+            height: 50px;
+            width: 100px;
+            background-color: blue;
+            color: aliceblue;
+            border-radius: 20px;
+        }
+        .card{
+            background-color: antiquewhite;
+        }
+        @media(max-width:500px){
+           #shirt{
+            height: 100%;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2,100px);
+            grid-template-rows: repeat(2,150px);
+           }
+           .card{
+            width: 100%;
+            height: 690px;
+            margin-top: 50px;
+           }
+           .left{
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+           }
+           .left img{
+            width: 100%;
+           }
+           .right{
+            font-size:small;
+           }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <h1>Shop<span>Key</span></h1>
+        </div>
+        <div class="nav-input">
+            <input type="text" class="input" placeholder="Serach for your products">
+        </div>
+        <div class="icons">
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href=".html">Contact</a></li>
+                <li id="about"><a href=".html">About</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="left">
+                <img class="_53J4C- utBuJY" alt src="https://rukminim2.flixcart.com/image/832/832/kihqz680-0/shirt/g/2/y/m-dark-blue-peter-field-original-imafy9npjdgmknfz.jpeg?q=70&crop=false">
+            </div>
+            <div class="right">
+                <h1>Mens black shirt </h1>
+                <h3>united colors of Benetton</h3>
+                <h3 style="color: green;">RS 300</h3>
+                <h2>Description</h2>
+                <h3>Black and smooth washable ,Has a slim fit solid collar shirt</h3>
+                <h2>Product preview</h2>
+                <div id="preview">
+                    <div id="shirt">
+                        <img class="_53J4C- utBuJY" alt src="https://rukminim2.flixcart.com/image/832/832/kihqz680-0/shirt/g/2/y/m-dark-blue-peter-field-original-imafy9npjdgmknfz.jpeg?q=70&crop=false">
+                        <img class="_53J4C- utBuJY" alt src="https://rukminim2.flixcart.com/image/832/832/kihqz680-0/shirt/u/h/b/l-dark-blue-peter-field-original-imafy9npbmywftvf.jpeg?q=70&crop=false">
+                        <img class="_53J4C- utBuJY" alt src="https://rukminim2.flixcart.com/image/832/832/kihqz680-0/shirt/w/v/b/m-dark-blue-peter-field-original-imafy9npcd62njch.jpeg?q=70&crop=false">
+                        <img class="_53J4C- utBuJY" alt src="https://rukminim2.flixcart.com/image/832/832/kihqz680-0/shirt/t/e/l/l-dark-blue-peter-field-original-imafy9npa8hnujbh.jpeg?q=70&crop=false">
+                    </div>
+                </div>
+                <br>
+                <div id="addtocart">
+                    <button onclick="cart()"> Add to cart</button>
+                </div>
+                    
+            </div>
+
+        </div>
+        
+    </div>
+</body>
+</html>
+<script>
+    function cart(){
+        window.location.href="cart.html"
+    }
+    function cart() {
+    const productName = document.querySelector('.right h1').innerText;
+    const productPrice = parseInt(document.querySelector('.right h3[style="color: green;"]').innerText.replace('RS ', ''));
+    const productImage = document.querySelector('.left img').src;
+
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.push({ name: productName, price: productPrice, image: productImage, quantity: 1 });
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+    window.location.href = "cart.html";
+}
+</script>

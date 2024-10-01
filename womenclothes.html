@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .nav{
+            box-sizing: border-box;
+            background-color: antiquewhite;
+            display: flex;
+            justify-content:space-around;
+        }
+        .logo{
+            padding: 15px;
+        }
+        .logo h1{
+            color: blue;
+        }
+        .logo span{
+            color: rgb(255, 0, 0);
+        }
+        .nav-input{
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .input:hover{
+            border: 3px solid orange;
+        }
+        .input{
+            height: 60%;
+            width: 80%;
+            font-size: larger;
+            border: 0cap;
+        }
+        .icons ul li{
+            list-style: none;
+            display: inline;
+            font-size: xx-large;
+           margin-right: 25px;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .icons{
+            margin-top: 15px;
+        }
+        
+        .icons a{
+            color: rgb(0, 0, 0);
+            
+        }
+        .icons li a{
+            text-decoration: none;
+        }
+        .icons :hover{
+            color: rgb(56, 190, 190);
+        }
+        .icon a{
+            display: none;
+        }
+        .cards:hover{
+            transition: 0.5s;
+            
+        }
+        @media  (max-width:400px){
+        .nav{
+            box-sizing: border-box;
+            overflow: hidden;
+            background-color:antiquewhite;
+            position: relative;
+        }
+        .nav-input{
+            display: none;
+        }
+        .icons ul li{
+            font-size: 20px;
+            margin-left: 15px;
+        }
+        .icons{
+            font-weight: bold;
+        }
+        #about{
+            margin-left: -9px;
+        }
+    }
+    .clothes{
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+        border: px solid black;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+    .container{
+        height: 500px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        
+        
+    }
+    .cards{
+        text-align: center;
+    }
+    .cards img{
+        height: 80%;
+        padding: 10px;
+    }
+    .cards:hover{
+        background-color: antiquewhite;
+        border-radius: 50px;
+
+    }
+    .foot{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            background-color: black;
+            color: aliceblue;
+            height: 300px;
+            width: 100%;
+            border: 1px solid;
+        }
+        .parts{
+            text-align: center;
+            cursor: pointer;
+        }
+        .parts h1,h3:hover{
+            color: aquamarine;
+        }
+        .cards h1{
+            color: green;
+        }
+        .container{
+            margin-bottom: 50px;
+        }
+        @media (max-width:500px){
+            .container{
+                display: grid;
+                grid-template-columns: repeat(2,180px);
+                grid-template-rows: repeat(3,290px);
+                height: 950px;
+                text-align: center;
+                row-gap: 30px;
+            }
+            .cards img{
+                width: 150px;
+                height: 190px;
+                margin-top: 20px;
+            }
+            .cards h1{
+                font-size: 20px;
+                color: green;
+            }
+            .cards{
+                width: 100%;
+                height: 320px;
+            }
+            .cards h1{
+                text-align: center;
+            }
+            .cards h3{
+                text-align: center;
+            }
+        }
+        @media (max-width:500px){
+            .foot{
+                font-size: 10px;
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                grid-template-rows: repeat(2,1fr);
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <h1>Shop<span>Key</span></h1>
+        </div>
+        <div class="nav-input">
+            <input type="text" class="input" placeholder="Serach for your products">
+        </div>
+        <div class="icons">
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href=".html">Contact</a></li>
+                <li id="about"><a href=".html">About</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="clothes">
+        <div class="container">
+            <div class="cards" style="width: 70%;">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/f/p/g/s-printed-dress-with-botton-rieka-original-imah2ayy7fjkc2kh.jpeg?q=70"width="100%">
+                <h3>Men Solid Cotton Blend Straight Kurta  (Multicolor)</h3>
+                <h4>Subramanian Collections </h4>
+                <h1>₹2,299</h1>
+            </div>
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/kurta/r/p/h/l-rf-lotus-kurti-rimeline-fashion-original-imah3bzghcgud4gy.jpeg?q=70">
+                <h3>Men Solid Cotton Blend Straight Kurta  (Multicolor)</h3>
+                <h4>Mansingh Collections </h4>
+                <h1>Rs 3,000</h1>
+            </div>
+            <div class="cards" style="width: 60%;">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/m/9/8/xl-dp329-aashley-original-imahywumgncfjz3y.jpeg?q=70" width="100%">
+                <h3>Men Solid Round Neck Polyester White T-Shirt</h3>
+                <h4>Madfrog </h4>
+                <h1>Rs 499</h1>
+            </div>
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/h/n/c/l-dr11424-sheetal-associates-original-imah3zthyygxc7ga.jpeg?q=70">
+                <h3>Men Colorblock Polo Neck Poly Cotton Green T-Shirt</h3>
+                <h4>DyrectDeals </h4>
+                <h1>Rs 999</h1>
+            </div>
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/l/2/i/m-7198-sheetal-associates-original-imagy6zx28bb8hy5.jpeg?q=70">
+                <h3>Men Printed Round Neck Polyester White, Black T-Shirt</h3>
+                <h4>Madfrog </h4>
+                <h1>Rs 999</h1>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/v/e/j/xl-6193-sheetal-associates-original-imah3xvkwhrepgxg.jpeg?q=70">
+                <h3>Men Solid Cotton Blend Straight Kurta  (Multicolor)</h3>
+                <h4>Subramanian Collections </h4>
+                <h1>₹2,299</h1>
+            </div>
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/a/h/3/s-ep3153-rare-original-imah3fgkh8pabfys.jpeg?q=70">
+                <h3>Men Solid Cotton Blend Straight Kurta  (Multicolor)</h3>
+                <h4>Mansingh Collections </h4>
+                <h1>Rs 3,000</h1>
+            </div>
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/h/v/f/xl-7183-sheetal-associates-original-imaguu9my5bfwbw6.jpeg?q=70">
+                <h3>Men Solid Round Neck Polyester White T-Shirt</h3>
+                <h4>Madfrog </h4>
+                <h1>Rs 499</h1>
+            </div>
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/h/6/o/xxl-6191-sheetal-associates-original-imah3xvkdj35ffh4.jpeg?q=70">
+                <h3>Men Colorblock Polo Neck Poly Cotton Green T-Shirt</h3>
+                <h4>DyrectDeals </h4>
+                <h1>Rs 999</h1>
+            </div>
+            <div class="cards" style="width: 70%;">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/p/j/5/s-ep31080-rare-original-imafwyxqnwfmxvx7-bb.jpeg?q=70" width="100%">
+                <h3>Men Printed Round Neck Polyester White, Black T-Shirt</h3>
+                <h4>Madfrog </h4>
+                <h1>Rs 999</h1>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/5/b/k/-original-imaguzaanbf775wf.jpeg?q=70">
+                <h3>Men Solid Cotton Blend Straight Kurta  (Multicolor)</h3>
+                <h4>Subramanian Collections </h4>
+                <h1>₹2,299</h1>
+            </div>
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/0/2/f/s-6192-sheetal-associates-original-imah3xvkyykcenfm.jpeg?q=70">
+                <h3>Men Solid Cotton Blend Straight Kurta  (Multicolor)</h3>
+                <h4>Mansingh Collections </h4>
+                <h1>Rs 3,000</h1>
+            </div>
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/8/f/q/xs-j0433-dr-janasya-original-imah3h6ta7t4fkyf.jpeg?q=70">
+                <h3>Men Solid Round Neck Polyester White T-Shirt</h3>
+                <h4>Madfrog </h4>
+                <h1>Rs 499</h1>
+            </div>
+            <div class="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/r/d/o/s-j0006-set-in-janasya-original-imahfzs4rjuvayrd.jpeg?q=70">
+                <h3>Men Colorblock Polo Neck Poly Cotton Green T-Shirt</h3>
+                <h4>DyrectDeals </h4>
+                <h1>Rs 999</h1>
+            </div>
+            <div class="cards" style="width: 70%;">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/dress/p/u/p/xl-wd-3119-white-aarvia-original-imah394kzffekufp.jpeg?q=70" width="100%">
+                <h3>Men Printed Round Neck Polyester White, Black T-Shirt</h3>
+                <h4>Madfrog </h4>
+                <h1>Rs 999</h1>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <div class="foot">
+            <div class="parts">
+                <h1><u>Online Store</u></h1>
+                <br>
+                <h3>Men clothes</h3>
+                <br>
+                <h3>Womens clothes</h3>
+                <br>
+                <h3 onclick="access()">Men Accessories</h3>
+                <br>
+                <h3>Women Accessories</h3>
+
+            </div>
+            <div class="parts">
+                <h1><u>Helpfull Link</u></h1>
+                <br>
+                <h3>Home</h3>
+                <br>
+                <h3>Contact</h3>
+                <br>
+                <h3>About</h3>
+
+            </div>
+            <div class="parts">
+                <h1><u>Partners</u></h1>
+                <br>
+                <h3>Zara</h3>
+                <br>
+                <h3>Pantaloons</h3>
+                <br>
+                <h3>Levis</h3>
+                <br>
+                <h3>Ubc</h3>
+                <br>
+                <h3>+ Many more</h3>
+            </div>
+            <div class="parts">
+                <h1><u>Address</u></h1>
+                <br>
+                <h3>-----</h3>
+                <br>
+                <h3>------</h3>
+                <br>
+                <h3>-----</h3>
+                <br>
+                <h3>-----</h3>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

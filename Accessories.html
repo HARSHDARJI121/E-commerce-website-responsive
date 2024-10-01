@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .nav{
+            box-sizing: border-box;
+            background-color: antiquewhite;
+            display: flex;
+            justify-content:space-around;
+        }
+        .logo{
+            padding: 15px;
+        }
+        .logo h1{
+            color: blue;
+        }
+        .logo span{
+            color: rgb(255, 0, 0);
+        }
+        .nav-input{
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .input:hover{
+            border: 3px solid orange;
+        }
+        .input{
+            height: 60%;
+            width: 80%;
+            font-size: larger;
+            border: 0cap;
+        }
+        .icons ul li{
+            list-style: none;
+            display: inline;
+            font-size: xx-large;
+           margin-right: 25px;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .icons{
+            margin-top: 15px;
+        }
+        
+        .icons a{
+            color: rgb(0, 0, 0);
+            
+        }
+        .icons li a{
+            text-decoration: none;
+        }
+        .icons :hover{
+            color: rgb(56, 190, 190);
+        }
+        .icon a{
+            display: none;
+        }
+        .cards:hover{
+            transition: 0.5s;
+            
+        }
+        @media  (max-width:400px){
+        .nav{
+            box-sizing: border-box;
+            overflow: hidden;
+            background-color:antiquewhite;
+            position: relative;
+        }
+        .nav-input{
+            display: none;
+        }
+        .icons ul li{
+            font-size: 20px;
+            margin-left: 15px;
+        }
+        .icons{
+            font-weight: bold;
+        }
+        #about{
+            margin-left: -9px;
+        }
+    }
+    .accessories{
+        height: 100%;
+        width: 100%;
+        border: px solid;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+    .container{
+        margin-top: 20px;
+        height: 400px;
+        width: 100%;
+        border: px solid;
+        display: flex;
+        justify-content: space-between;
+    }
+    #cards{
+        height: 100%;
+        text-align: center;
+    }
+    #cards img{
+        height: 80%;
+        padding: 20px;
+    }
+    #cards:hover{
+        background-color: antiquewhite;
+        border-radius: 20px;
+        transition: 0.5s;
+    }
+    .foot{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            background-color: black;
+            color: aliceblue;
+            height: 300px;
+            width: 100%;
+            border: 1px solid;
+        }
+        .parts{
+            text-align: center;
+            cursor: pointer;
+        }
+        .parts h1,h3:hover{
+            color: aquamarine;
+        }
+        @media (max-width:500px){
+            .container{
+                display: grid;
+                grid-template-columns: repeat(2,180px);
+                grid-template-rows: repeat(3,290px);
+                height: 880px;
+                text-align: center;
+            }
+            #cards img{
+                width: 150px;
+                height: 150px;
+                margin-top: 20px;
+            }
+            #cards h1{
+                font-size: 20px;
+                color: green;
+            }
+            #cards{
+                width: 100%;
+                height: 300px;
+            }
+            #cards h1{
+                text-align: center;
+            }
+            #cards h3{
+                text-align: center;
+            }
+        }
+        @media (max-width:500px){
+            .foot{
+                font-size: 10px;
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                grid-template-rows: repeat(2,1fr);
+                gap: 20px;
+            }
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="logo">
+            <h1>Shop<span>Key</span></h1>
+        </div>
+        <div class="nav-input">
+            <input type="text" class="input" placeholder="Serach for your products">
+        </div>
+        <div class="icons">
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href=".html">Contact</a></li>
+                <li id="about"><a href=".html">About</a></li>
+            </ul>
+        </div>
+    </div>
+<div class="accessories">
+        <div class="container">
+            <div id="cards">
+                <img loading="eager" class="DByuf4" alt="boAt Airdopes 161/163 with ASAP Charge & 40 HRS Playback Bluetooth" src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/l/k/i/-original-imah3zvdp7ucukjr.jpeg?q=70">
+                <h3>Wired Gaming Headset</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>RS 20,000</h1>
+            </div>
+            <div id="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/backpack/n/b/f/-original-imahymzfkxy5uweg.jpeg?q=70">
+                <h3>Additional featured Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 15,000</h1>
+            </div>
+            <div id="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/j/z/a/1-aero-aw-a9-4-slv-aeropostale-men-original-imaghr2d4ha4qzqw.jpeg?q=70">
+                <h3>Mens Simple And Smooth Watch</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 8,000</h1>
+            </div>
+            <div id="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/sunglass/j/r/a/m-a346-fashion-black-piraso-original-imah4gq4rf3hgguk.jpeg?q=70">
+                <h3>Wiredless Gaming Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 5,000</h1>
+            </div>
+            <div id="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/u/r/h/-original-imagyxxfgz52vzqn.jpeg?q=70">
+                <h3>Smart Men Smart Watches</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 12,000</h1>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div id="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/3/s/v/-original-imah2ddgytxhfhrs.jpeg?q=70">
+                <h3>Wired Gaming Headset</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>RS 20,000</h1>
+            </div>
+            <div id="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/5/a/o/1-pglc-2005-provogue-men-original-imahfenvrgtyyfvr.jpeg?q=70">
+                <h3>Additional featured Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 15,000</h1>
+            </div>
+            <div id="cards" style="width: 60%;">
+                <img loading="eager" class="DByuf4" alt="realme Buds T110 with AI ENC for calls, upto 38 hours of Playback and Fast Charging Bluetooth" src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/f/y/f/-original-imahy3uqgtzmdsge.jpeg?q=70" width="100%">
+                <h3>Mens Simple And Smooth Watch</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 8,000</h1>
+            </div>
+            <div id="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/necklace-chain/q/l/x/-original-imahyjffwrbk2rvv.jpeg?q=70">
+                <h3>Wiredless Gaming Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 5,000</h1>
+            </div>
+            <div id="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/k8et4sw0/sunglass/r/p/x/55-silver-and-blue-mercury-hipe-original-imafqfwjnhntzx5h.jpeg?q=70">
+                <h3>Smart Men Smart Watches</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 12,000</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div id="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/necklace-chain/3/s/8/-original-imahyjffdbp6pnuy.jpeg?q=70">
+                <h3>Wired Gaming Headset</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>RS 20,000</h1>
+            </div>
+            <div id="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/o/3/r/-original-imah2ggwgpk9x79y.jpeg?q=70">
+                <h3>Additional featured Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 15,000</h1>
+            </div>
+            <div id="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/i/l/m/7-8216472-7-bata-jet-black-original-imah45txqduudyts.jpeg?q=70">
+                <h3>Mens Simple And Smooth Watch</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 8,000</h1>
+            </div>
+            <div id="cards">
+                <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/sunglass/t/p/x/l-148974-vincent-chase-original-imahyqcycsbfyuwq.jpeg?q=70">
+                <h3>Wiredless Gaming Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 5,000</h1>
+            </div>
+            <div id="cards" style="width: 70%;">
+                <img loading="lazy" class="DByuf4" alt="boAt Rockerz 450 Pro with Upto 70 Hours Playback Bluetooth" src="https://rukminim2.flixcart.com/image/300/300/kmccosw0/headphone/u/g/s/rockerz-450-pro-boat-original-imagf9j54dayugqg.jpeg?q=90" width="100%">
+                <h3>Smart Men Smart Watches</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 12,000</h1>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <footer>
+        <div class="foot">
+            <div class="parts">
+                <h1><u>Online Store</u></h1>
+                <br>
+                <h3>Men clothes</h3>
+                <br>
+                <h3>Womens clothes</h3>
+                <br>
+                <h3 onclick="access()">Men Accessories</h3>
+                <br>
+                <h3>Women Accessories</h3>
+
+            </div>
+            <div class="parts">
+                <h1><u>Helpfull Link</u></h1>
+                <br>
+                <h3>Home</h3>
+                <br>
+                <h3>Contact</h3>
+                <br>
+                <h3>About</h3>
+
+            </div>
+            <div class="parts">
+                <h1><u>Partners</u></h1>
+                <br>
+                <h3>Zara</h3>
+                <br>
+                <h3>Pantaloons</h3>
+                <br>
+                <h3>Levis</h3>
+                <br>
+                <h3>Ubc</h3>
+                <br>
+                <h3>+ Many more</h3>
+            </div>
+            <div class="parts">
+                <h1><u>Address</u></h1>
+                <br>
+                <h3>-----</h3>
+                <br>
+                <h3>------</h3>
+                <br>
+                <h3>-----</h3>
+                <br>
+                <h3>-----</h3>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
