@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* General Body Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      background-image: url("https://ak2.picdn.net/shutterstock/videos/1485730/thumb/1.jpg")
+    }
+
+    /* Header Styling */
+    header {
+      background-color: transparent;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    /* Container and Form Styling */
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    /* Modal Overlay */
+#modalOverlay {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal */
+#editProductModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 50px;
+  max-height: 80vh; /* Limit the height of the modal */
+  width: 80%; /* You can adjust the width as needed */
+  overflow-y: auto; /* Enable vertical scrolling for modal if content is too tall */
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make the form scrollable */
+#editProductForm {
+  padding: 10px;
+  max-height: 400px; /* Limit the height of the form */
+  overflow-y: auto; /* Enable vertical scrolling inside the form */
+  box-sizing: border-box;
+  flex-grow: 1; /* Ensure form takes up remaining space within modal */
+  padding: 50px;
+}
+
+/* Optional styling for form elements */
+form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+form input, form textarea, form button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+form button {
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+/* Modal Header */
+#editProductModal h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+/* Product Table Styling (For Your Product List Table) */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.product-table th, .product-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.product-table th {
+  background-color: #f8f9fa;
+  color: #495057;
+}
+
+.product-table td {
+  background-color: #fff;
+}
+
+.product-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.product-table .action-buttons {
+  text-align: center;
+}
+
+.product-table button {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin: 5px;
+}
+
+.product-table button:hover {
+  background-color: #0056b3;
+}
+
+/* Footer Styling */
+footer {
+  background-color: transparent;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-container, .product-list {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Admin Panel</h1>
+  </header>
+
+  <div class="container">
+    <!-- Add Product Form -->
+    <div class="form-container">
+      <h2>Add New Product</h2>
+      <form id="productForm">
+        <input type="text" id="name" placeholder="Product Name" required />
+        <input type="text" id="image" placeholder="Product Image URL" required />
+        <input type="text" id="size" placeholder="Size" required />
+        <input type="number" id="retail_price" placeholder="Retail Price" required />
+        <input type="number" id="distribution_price" placeholder="Distribution Price" required />
+        <textarea id="short_description" placeholder="Short Description" required></textarea>
+        <input type="text" id="category" placeholder="Category" required />
+        <button type="submit">Add Product</button>
+      </form>
+    </div>
+
+    <!-- Product List -->
+    <div class="product-list">
+      <h2>Product List</h2>
+      <table class="product-table" id="productTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Size</th>
+            <th>Retail Price</th>
+            <th>Distribution Price</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Products will be dynamically loaded here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Admin Panel | E-commerce</p>
+  </footer>
+
+  <!-- Edit Product Modal -->
+  <div id="modalOverlay"></div>
+  <div id="editProductModal">
+    <h2>Edit Product</h2>
+    <form style="padding: 10px; height: 500px;" id="editProductForm">
+      <label for="editName">Name</label>
+      <input type="text" id="editName" required />
+
+      <label for="editImage">Image URL</label>
+      <input type="text" id="editImage" required />
+
+      <label for="editSize">Size</label>
+      <input type="text" id="editSize" required />
+
+      <label for="editRetailPrice">Retail Price</label>
+      <input type="number" id="editRetailPrice" required />
+
+      <label for="editDistributionPrice">Distribution Price</label>
+      <input type="number" id="editDistributionPrice" required />
+
+      <label for="editShortDescription">Short Description</label>
+      <textarea id="editShortDescription" required></textarea>
+
+      <label for="editCategory">Category</label>
+      <input type="text" id="editCategory" required />
+
+      <button type="submit">Update Product</button>
+    </form>
+  </div>
+
+  <script>
+    // Fetch and display products
+    async function loadProducts() {
+      const response = await fetch('/api/products');
+      const products = await response.json();
+      const productTableBody = document.querySelector('#productTable tbody');
+      productTableBody.innerHTML = ''; // Clear previous content
+
+      products.forEach(product => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${product.name}</td>
+          <td><img src="${product.image}" alt="${product.name}" width="50"></td>
+          <td>${product.size}</td>
+          <td>${product.retail_price}</td>
+          <td>${product.distribution_price}</td>
+          <td>${product.short_description}</td>
+          <td>${product.category}</td>
+          <td class="action-buttons">
+            <button class="edit-btn" onclick="editProduct(${product.id})">Edit</button>
+            <button class="delete-btn" onclick="deleteProduct(${product.id})">Delete</button>
+          </td>
+        `;
+        productTableBody.appendChild(row);
+      });
+    }
+
+    // Add new product
+    document.querySelector('#productForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const product = {
+        name: document.querySelector('#name').value,
+        image: document.querySelector('#image').value,
+        size: document.querySelector('#size').value,
+        retail_price: document.querySelector('#retail_price').value,
+        distribution_price: document.querySelector('#distribution_price').value,
+        short_description: document.querySelector('#short_description').value,
+        category: document.querySelector('#category').value
+      };
+
+      const response = await fetch('/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(product)
+      });
+
+      if (response.ok) {
+        alert('Product added successfully!');
+        loadProducts(); // Refresh product list
+        document.querySelector('#productForm').reset(); // Clear the form
+      } else {
+        alert('Error adding product');
+      }
+    });
+
+    // Edit product
+    function editProduct(id) {
+      const modal = document.getElementById('editProductModal');
+      const overlay = document.getElementById('modalOverlay');
+      overlay.style.display = 'block';
+      modal.style.display = 'block';
+
+      fetch(`/api/products/${id}`)
+        .then(response => response.json())
+        .then(product => {
+          document.getElementById('editName').value = product.name;
+          document.getElementById('editImage').value = product.image;
+          document.getElementById('editSize').value = product.size;
+          document.getElementById('editRetailPrice').value = product.retail_price;
+          document.getElementById('editDistributionPrice').value = product.distribution_price;
+          document.getElementById('editShortDescription').value = product.short_description;
+          document.getElementById('editCategory').value = product.category;
+        });
+
+      document.querySelector('#editProductForm').onsubmit = async (e) => {
+        e.preventDefault();
+        const updatedProduct = {
+          name: document.getElementById('editName').value,
+          image: document.getElementById('editImage').value,
+          size: document.getElementById('editSize').value,
+          retail_price: document.getElementById('editRetailPrice').value,
+          distribution_price: document.getElementById('editDistributionPrice').value,
+          short_description: document.getElementById('editShortDescription').value,
+          category: document.getElementById('editCategory').value
+        };
+
+        const response = await fetch(`/api/products/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updatedProduct)
+        });
+
+        if (response.ok) {
+          alert('Product updated successfully');
+          loadProducts(); // Refresh product list
+          modal.style.display = 'none';
+          overlay.style.display = 'none';
+        } else {
+          alert('Error updating product');
+        }
+      };
+    }
+
+    // Delete product
+    async function deleteProduct(id) {
+      const response = await fetch(`/api/products/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        alert('Product deleted successfully');
+        loadProducts(); // Refresh product list
+      } else {
+        alert('Error deleting product');
+      }
+    }
+
+    // Close the modal when the overlay is clicked
+    document.getElementById('modalOverlay').onclick = () => {
+      document.getElementById('editProductModal').style.display = 'none';
+      document.getElementById('modalOverlay').style.display = 'none';
+    };
+
+    // Load products when the page is loaded
+    window.onload = loadProducts;
+  </script>
+
+</body>
+</html>

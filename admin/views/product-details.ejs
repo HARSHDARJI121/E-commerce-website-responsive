@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        /* Your existing styles here */
+    </style>
+</head>
+
+<body>
+    <div id="product-details">
+        <div id="product-image">
+            <img id="product-img" src="" alt="Product Image" />
+        </div>
+        <div id="product-info">
+            <h1 id="product-name"></h1>
+            <p id="product-description"></p>
+            <p><strong>Price:</strong> ₹<span id="product-price"></span></p>
+
+            <div id="size-selection">
+                <label for="sizes">Choose Size:</label>
+                <select id="sizes"> <!-- Default value will be updated via JavaScript --> </select>
+            </div>
+
+            <button id="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <script>
+        // Fetch the product details using the product ID from the URL
+        const productId = window.location.pathname.split('/').pop();
+
+        fetch(`/api/products/${productId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Product not found');
+                }
+                return response.json();
+            })
+            .then(product => {
+                // Check if the product data is valid
+                if (product) {
+                    document.getElementById('product-img').src = product.image || 'default-image.jpg';
+                    document.getElementById('product-name').textContent = product.name || 'Product Name';
+                    document.getElementById('product-description').textContent = product.description || 'No description available';
+                    document.getElementById('product-price').textContent = product.price || 'Price not available';
+
+                    // Populate size selection dropdown
+                    const sizeSelect = document.getElementById('sizes');
+                    if (product.sizes && product.sizes.length > 0) {
+                        product.sizes.forEach(size => {
+                            const option = document.createElement('option');
+                            option.value = size;
+                            option.textContent = size;
+                            sizeSelect.appendChild(option);
+                        });
+                    } else {
+                        const option = document.createElement('option');
+                        option.textContent = 'No sizes available';
+                        sizeSelect.appendChild(option);
+                        sizeSelect.disabled = true;
+                    }
+                } else {
+                    console.error('Product data is missing or malformed');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching product details:', error);
+                document.getElementById('product-name').textContent = 'Product not found';
+                document.getElementById('product-description').textContent = 'Sorry, the product details could not be loaded.';
+                document.getElementById('product-price').textContent = 'Price unavailable';
+            });
+
+        // Add to cart button functionality
+        document.getElementById('add-to-cart').addEventListener('click', () => {
+            const selectedSize = document.getElementById('sizes').value;
+            const productName = document.getElementById('product-name').textContent;
+            const productPrice = document.getElementById('product-price').textContent;
+            const productImage = document.getElementById('product-img').src;
+
+            if (!selectedSize) {
+                alert('Please select a size');
+                return;
+            }
+
+            // Product data to store in the cart
+            const productToAdd = {
+                productId,
+                name: productName,
+                price: productPrice,
+                size: selectedSize,
+                image: productImage
+            };
+
+            // Get the existing cart from localStorage, if any
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Check if the product is already in the cart
+            const existingProduct = cart.find(item => item.productId === productId && item.size === selectedSize);
+
+            if (existingProduct) {
+                alert('This product is already in the cart.');
+            } else {
+                // Add the product to the cart
+                cart.push(productToAdd);
+
+                // Save the updated cart back to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                alert('Product added to cart');
+            }
+        });
+    </script>
+</body>
+
+</html>

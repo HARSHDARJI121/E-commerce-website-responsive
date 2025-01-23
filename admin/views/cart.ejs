@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* General Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-top: 30px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-top: 20px;
+  text-align: right;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+td img {
+  border-radius: 5px;
+  max-width: 50px;
+}
+
+td input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+td form button {
+  background-color: #28a745;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  margin-top: 5px;
+  transition: background-color 0.3s;
+}
+
+td form button:hover {
+  background-color: #218838;
+}
+
+/* Empty Cart Styling */
+p {
+  font-size: 1.2rem;
+  color: #888;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Total Price */
+h3 {
+  font-size: 1.5rem;
+  color: #333;
+  text-align: right;
+  margin-top: 20px;
+}
+
+/* Button container */
+button {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  font-size: 1.2rem;
+  border-radius: 25px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  table, th, td {
+    font-size: 0.9rem;
+  }
+
+  td img {
+    max-width: 40px;
+  }
+
+  button {
+    width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  table, th, td {
+    font-size: 0.8rem;
+  }
+
+  td img {
+    max-width: 35px;
+  }
+
+  button {
+    width: 120px;
+  }
+}
+
+    </style>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+
+<body>
+    <h1>Your Shopping Cart</h1>
+    <div id="cart-items">
+        <!-- Cart items will be dynamically inserted here -->
+    </div>
+
+    <script>
+        // Retrieve the cart from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        if (cart.length === 0) {
+            document.getElementById('cart-items').innerHTML = '<p>Your cart is empty</p>';
+        } else {
+            // Loop through the cart items and display them
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.innerHTML = `
+                    <div>
+                        <img src="${item.image}" alt="${item.name}" style="width: 100px;">
+                        <p>Name: ${item.name}</p>
+                        <p>Price: ₹${item.price}</p>
+                        <p>Size: ${item.size}</p>
+                    </div>
+                `;
+                document.getElementById('cart-items').appendChild(itemElement);
+            });
+        }
+    </script>
+</body>
+
+</html>

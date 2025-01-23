@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+  <style>
+    /* Global styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header styles */
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 2.5rem;
+      margin-top: 30px;
+    }
+
+    /* Cart Table Styling */
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    thead {
+      background-color: #007bff;
+      color: white;
+    }
+
+    th,
+    td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #f1f1f1;
+    }
+
+    th {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    td img {
+      border-radius: 5px;
+    }
+
+    tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Price & Quantity Formatting */
+    td {
+      font-size: 1.2rem;
+    }
+
+    td img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+
+    .quantity-control {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .quantity-control button {
+      padding: 5px 10px;
+      cursor: pointer;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      margin: 0 5px;
+    }
+
+    .quantity-control input {
+      width: 50px;
+      text-align: center;
+      font-size: 1.2rem;
+      border: 1px solid #ccc;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    /* Remove Button */
+    .remove-btn {
+      padding: 5px 10px;
+      background-color: #ff6f61;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .remove-btn:hover {
+      background-color: #e04e3a;
+    }
+
+    /* Total Section */
+    h3 {
+      text-align: right;
+      font-size: 1.8rem;
+      color: #333;
+      margin-top: 20px;
+      margin-right: 30px;
+    }
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 20px 0;
+      background-color: #28a745;
+      color: white;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    a:hover {
+      background-color: #218838;
+    }
+
+    a:focus {
+      outline: none;
+    }
+
+    /* Empty Cart Message */
+    p {
+      font-size: 1.5rem;
+      text-align: center;
+      color: #ff6f61;
+      margin-top: 50px;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      table {
+        width: 95%;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      td {
+        font-size: 1rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin-right: 20px;
+      }
+
+      a {
+        font-size: 1rem;
+      }
+    }
+
+  </style>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+  <style>
+    /* Your existing styles go here */
+    /* ... */
+  </style>
+</head>
+
+<body>
+  <h1>Your Cart</h1>
+
+  <% if (cart && cart.length > 0) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Size</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% cart.forEach(item => { %>
+      <tr data-product-id="<%= item.productId %>" data-size="<%= item.size %>">
+        <td><img src="<%= item.image %>" alt="<%= item.name %>" width="50" height="50"></td>
+        <td><%= item.size %></td>
+        <td>₹<%= item.price %></td>
+        <td>
+          <div class="quantity-control">
+            <button class="decrement">-</button>
+            <input type="number" value="<%= item.quantity %>" class="quantity-input" min="1" />
+            <button class="increment">+</button>
+          </div>
+        </td>
+        <td>₹<%= item.price * item.quantity %></td>
+        <td><button class="remove-btn">Remove</button></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <h3>Total: ₹<%= cart.reduce((total, item) => total + (item.price * item.quantity), 0) %></h3>
+  <a href="/checkout">Proceed to Checkout</a>
+
+  <% } else { %>
+  <p>Your cart is empty.</p>
+  <% } %>
+
+  <script>
+    document.addEventListener("DOMContentLoaded"), function () {
+      // Retrieve cart data from server-side (passed as JSON)
+      let cart = '<%- JSON.stringify(cart) %>';
+
+      // Function to update the cart in localStorage and re-render the total
+      function updateCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        document.querySelector('h3').textContent = `Total: ₹${totalPrice}`;
+      }
+
+      // Quantity increment functionality
+      document.querySelectorAll('.increment').forEach(button => {
+        button.addEventListener('click', function (event) {
+          const row = event.target.closest('tr');
+          const productId = row.getAttribute('data-product-id');
+          const size = row.getAttribute('data-size');
+          const item = cart.find(i => i.productId === productId && i.size === size);
+
+          if (item) {
+            item.quantity++;
+            row.querySelector('.quantity-input').value = item.quantity;
+            updateCart();
+          }
+        });
+      });
+
+      // Quantity decrement functionality
+      document.querySelectorAll('.decrement').forEach(button => {
+        button.addEventListener('click', function (event) {
+          const row = event.target.closest('tr');
+          const productId = row.getAttribute('data-product-id');
+          const size = row.getAttribute('data-size');
+          const item = cart.find(i => i.productId === productId && i.size === size);
+
+          if (item && item.quantity > 1) {
+            item.quantity--;
+            row.querySelector('.quantity-input').value = item.quantity;
+            updateCart();
+          }
+        });
+          // Remove product from cart
+          document.querySelectorAll('.remove-btn').forEach(button => {
+        button.addEventListener('click', function (event) {
+          const row = event.target.closest('tr');
+          const productId = row.getAttribute('data-product-id');
+          const size = row.getAttribute('data-size');
+          const itemIndex = cart.findIndex(i => i.productId === productId && i.size === size);
+
+          if (itemIndex !== -1) {
+            // Remove item from cart array
+            cart.splice(itemIndex, 1);
+            row.remove();
+            updateCart(); // Update cart and re-render total
+          }
+        });
+      });
+
+      // Update the cart in localStorage when the page loads
+      updateCart();
+    });
+  }
+  </script>
+
+</body>
+
+</html>

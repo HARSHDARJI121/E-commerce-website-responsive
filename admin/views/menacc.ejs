@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Sticky Nav Styling */
+        nav {
+            position: sticky;
+            background-color: #ffffff;
+            top: 0;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px;
+            width: 100%;
+            z-index: 100;
+        }
+
+        /* Left Section (Logo and Links) */
+        .left {
+            display: flex;
+            align-items: center;
+        }
+
+        .left img {
+            width: 53px;
+            height: 36px;
+            margin-right: 20px;
+        }
+
+        .left ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .left a {
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: #333;
+            padding: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .left a:hover {
+            color: #ff5722;
+        }
+
+        /* Right Section (Search and Icons) */
+        .right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .right input {
+            font-size: 14px;
+            height: 36px;
+            width: 250px;
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #f9f9f9;
+            color: #696e79;
+            outline: none;
+            transition: width 0.3s ease;
+        }
+
+        .right input:focus {
+            width: 300px;
+            border-color: #ff5722;
+        }
+
+        /* Icons Section */
+        .icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .icons a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            padding: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .icons a:hover {
+            color: #ff5722;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .left ul {
+                display: none;
+            }
+
+            .right input {
+                width: 150px;
+            }
+
+            .icons a {
+                font-size: 14px;
+            }
+        }
+
+        /* Grid Layout for cards */
+        .clothes {
+            padding: 40px 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        /* Card Styles */
+        .cards {
+            position: relative;
+            width: 23%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Image Styling for Cards */
+        .cards img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover Effects */
+        .cards:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .cards:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Text Styles */
+        h3, h4, h1 {
+            font-family: 'Arial', sans-serif;
+            margin: 10px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 1rem;
+            color: #777;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #e91e63;
+            font-weight: 700;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .cards {
+                width: 48%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cards {
+                width: 100%;
+            }
+        }
+
+        /* Cards Hover Button */
+        .cards::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .cards:hover::after {
+            opacity: 1;
+        }
+
+        h3, h4, h1 {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Button Style */
+        .cards:hover h1, .cards:hover h3, .cards:hover h4 {
+            color: #fff;
+        }
+
+        footer {
+            background-color: #000;
+            padding: 40px 0;
+            font-size: 14px;
+            color: #696b79;
+            font-family: 'Arial', sans-serif;
+            letter-spacing: 0.3px;
+            text-align: center;
+        }
+
+        footer .foot {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        footer .parts {
+            flex: 1;
+            text-align: left;
+        }
+
+        footer .parts h1 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        footer .parts h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            cursor: pointer;
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        footer .parts h3:hover {
+            color: #ff5722;
+        }
+
+        @media (max-width: 768px) {
+            footer .foot {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer .parts {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            footer .parts h1 {
+                font-size: 1.2rem;
+            }
+
+            footer .parts h3 {
+                font-size: 0.9rem;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="left">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/logo.png" alt="Logo">
+            <ul>
+                <li><a href="/menclothes">Men</a></li>
+                <li><a href="/womenclothes">Women</a></li>
+                <li><a href="/menaccessories">Men Accessories</a></li>
+                <li><a href="/beauty">Beauty</a></li>
+                <li><a href="/womenaccessories">Women Accessories</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <input type="text" placeholder="Search for products, brands, and more">
+            <div class="icons">
+                <a href="/Home">Home</a>
+                <a href="/profile">Profile</a>
+                <a href="/Cart">Cart</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="clothes">
+        <div class="container">
+            <div class="cards">
+                <img loading="eager" src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/l/k/i/-original-imah3zvdp7ucukjr.jpeg?q=70" alt="boAt Airdopes 161/163 with ASAP Charge & 40 HRS Playback Bluetooth">
+                <h3>Wired Gaming Headset</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>RS 20,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/backpack/n/b/f/-original-imahymzfkxy5uweg.jpeg?q=70" alt="Earbuds">
+                <h3>Additional featured Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 15,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/j/z/a/1-aero-aw-a9-4-slv-aeropostale-men-original-imaghr2d4ha4qzqw.jpeg?q=70" alt="Mens Simple And Smooth Watch">
+                <h3>Mens Simple And Smooth Watch</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 8,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/sunglass/j/r/a/m-a346-fashion-black-piraso-original-imah4gq4rf3hgguk.jpeg?q=70" alt="Wiredless Gaming Earbuds">
+                <h3>Wiredless Gaming Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 5,000</h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/3/s/v/-original-imah2ddgytxhfhrs.jpeg?q=70" alt="Wired Gaming Headset">
+                <h3>Wired Gaming Headset</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>RS 20,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/5/a/o/1-pglc-2005-provogue-men-original-imahfenvrgtyyfvr.jpeg?q=70" alt="Additional featured Earbuds">
+                <h3>Additional featured Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 15,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/3/s/v/-original-imah2ddgytxhfhrs.jpeg?q=70" alt="Wired Gaming Headset">
+                <h3>Wired Gaming Headset</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>RS 20,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/5/a/o/1-pglc-2005-provogue-men-original-imahfenvrgtyyfvr.jpeg?q=70" alt="Additional featured Earbuds">
+                <h3>Additional featured Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 15,000</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/3/s/v/-original-imah2ddgytxhfhrs.jpeg?q=70" alt="Wired Gaming Headset">
+                <h3>Wired Gaming Headset</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>RS 20,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/5/a/o/1-pglc-2005-provogue-men-original-imahfenvrgtyyfvr.jpeg?q=70" alt="Additional featured Earbuds">
+                <h3>Additional featured Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 15,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/3/s/v/-original-imah2ddgytxhfhrs.jpeg?q=70" alt="Wired Gaming Headset">
+                <h3>Wired Gaming Headset</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>RS 20,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/5/a/o/1-pglc-2005-provogue-men-original-imahfenvrgtyyfvr.jpeg?q=70" alt="Additional featured Earbuds">
+                <h3>Additional featured Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 15,000</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/3/s/v/-original-imah2ddgytxhfhrs.jpeg?q=70" alt="Wired Gaming Headset">
+                <h3>Wired Gaming Headset</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>RS 20,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/5/a/o/1-pglc-2005-provogue-men-original-imahfenvrgtyyfvr.jpeg?q=70" alt="Additional featured Earbuds">
+                <h3>Additional featured Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 15,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/3/s/v/-original-imah2ddgytxhfhrs.jpeg?q=70" alt="Wired Gaming Headset">
+                <h3>Wired Gaming Headset</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>RS 20,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/5/a/o/1-pglc-2005-provogue-men-original-imahfenvrgtyyfvr.jpeg?q=70" alt="Additional featured Earbuds">
+                <h3>Additional featured Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 15,000</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/3/s/v/-original-imah2ddgytxhfhrs.jpeg?q=70" alt="Wired Gaming Headset">
+                <h3>Wired Gaming Headset</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>RS 20,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/5/a/o/1-pglc-2005-provogue-men-original-imahfenvrgtyyfvr.jpeg?q=70" alt="Additional featured Earbuds">
+                <h3>Additional featured Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 15,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/3/s/v/-original-imah2ddgytxhfhrs.jpeg?q=70" alt="Wired Gaming Headset">
+                <h3>Wired Gaming Headset</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>RS 20,000</h1>
+            </div>
+            <div class="cards">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/5/a/o/1-pglc-2005-provogue-men-original-imahfenvrgtyyfvr.jpeg?q=70" alt="Additional featured Earbuds">
+                <h3>Additional featured Earbuds</h3>
+                <h4>united colors of Benetton</h4>
+                <h1>Rs 15,000</h1>
+            </div>
+        </div>
+            
+                
+
+    <footer>
+        <div class="foot">
+            <div class="parts">
+                <h1><u>Online Store</u></h1>
+                <br>
+                <h3 onclick="clothes()">Men clothes</h3>
+                <br>
+                <h3 onclick="womenclothes()">Womens clothes</h3>
+                <br>
+                <h3 onclick="access()">Men Accessories</h3>
+                <br>
+                <h3 onclick="womenaccess()">Women Accessories</h3>
+
+            </div>
+            <div class="parts">
+                <h1><u>Helpfull Link</u></h1>
+                <br>
+                <h3>Home</h3>
+                <br>
+                <h3>Contact</h3>
+                <br>
+                <h3>About</h3>
+
+            </div>
+            <div class="parts">
+                <h1><u>Partners</u></h1>
+                <br>
+                <h3>Zara</h3>
+                <br>
+                <h3>Pantaloons</h3>
+                <br>
+                <h3>Levis</h3>
+                <br>
+                <h3>Ubc</h3>
+                <br>
+                <h3>+ Many more</h3>
+            </div>
+            <div class="parts">
+                <h1><u>Address</u></h1>
+                <br>
+                <h3>-----</h3>
+                <br>
+                <h3>------</h3>
+                <br>
+                <h3>-----</h3>
+                <br>
+                <h3>-----</h3>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        /* Basic styles for the page */
+    </style>
+</head>
+<body>
+    <div class="container" id="product-list"></div>
+
+    <script>
+        // Fetch product data from API and display on the page
+        fetch('/api/products')
+            .then(response => response.json())
+            .then(products => {
+                const productList = document.getElementById('product-list');
+                productList.innerHTML = '';
+
+                products.forEach(product => {
+                    const card = document.createElement('div');
+                    card.classList.add('cards');
+                    card.innerHTML = `
+                        <img src="${product.image_url}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <h4>${product.brand}</h4>
+                        <h1>₹${product.price}</h1>
+                    `;
+
+                    // When clicked, redirect to the product detail page
+                    card.onclick = () => {
+                        window.location.href = `/product/${product.id}`;
+                    };
+
+                    productList.appendChild(card);
+                });
+            })
+            .catch(error => console.error('Error fetching products:', error));
+    </script>
+</body>
+</html>

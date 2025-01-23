@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Sticky Nav Styling */
+        nav {
+            position: sticky;
+            background-color: #ffffff;
+            top: 0;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px;
+            width: 100%;
+            z-index: 100;
+        }
+
+        /* Left Section (Logo and Links) */
+        .left {
+            display: flex;
+            align-items: center;
+        }
+
+        .left img {
+            width: 53px;
+            height: 36px;
+            margin-right: 20px;
+        }
+
+        .left ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .left a {
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: #333;
+            padding: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .left a:hover {
+            color: #ff5722;
+        }
+
+        /* Right Section (Search and Icons) */
+        .right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .right input {
+            font-size: 14px;
+            height: 36px;
+            width: 250px;
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #f9f9f9;
+            color: #696e79;
+            outline: none;
+            transition: width 0.3s ease;
+        }
+
+        .right input:focus {
+            width: 300px;
+            border-color: #ff5722;
+        }
+
+        /* Icons Section */
+        .icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .icons a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            padding: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .icons a:hover {
+            color: #ff5722;
+        }
+
+        /* Grid Layout for Cards */
+        .clothes {
+            padding: 40px 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        /* Card Styles */
+        .cards {
+            position: relative;
+            width: 23%; /* Ensures 4 items per row */
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Image Styling for Cards */
+        .cards img {
+            width: 100%; /* Makes the image cover the full width of the card */
+            height: 250px; /* Fixed height for all images */
+            object-fit: cover; /* Ensures the image maintains aspect ratio and covers the area */
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover Effects */
+        .cards:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .cards:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Text Styles */
+        h3, h4, h1 {
+            font-family: 'Arial', sans-serif;
+            margin: 10px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 1rem;
+            color: #777;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #e91e63;
+            font-weight: 700;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .cards {
+                width: 48%; /* 2 items per row */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cards {
+                width: 100%; /* Full-width for small screens */
+            }
+        }
+
+        /* Card hover button */
+        .cards::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .cards:hover::after {
+            opacity: 1;
+        }
+
+        h3, h4, h1 {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Button Style */
+        .cards:hover h1 {
+            color: #fff;
+        }
+
+        /* Styling for Hovered Cards */
+        .cards:hover h3 {
+            color: #fff;
+        }
+
+        .cards:hover h4 {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="left">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/logo.png" alt="Logo">
+            <ul>
+                <li><a href="/menclothes">Men</a></li>
+                <li><a href="/womenclothes">Women</a></li>
+                <li><a href="/menaccessories">Men Accessories</a></li>
+                <li><a href="/beauty">Beauty</a></li>
+                <li><a href="/womenaccessories">Women Accessories</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <input type="text" placeholder="Search for products, brands, and more">
+            <div class="icons">
+                <a href="/">Home</a>
+                <a href="/profile">Profile</a>
+                <a href="/Cart">Cart</a>
+            </div>
+        </div>
+    </nav>
+    <div class="clothes">
+        <div class="container"></div>
+    </div>
+
+    <script>
+        fetch(`/api/products?category=Men clothes`) // Change 'Women' to the relevant category
+    .then(response => response.json())
+    .then(products => {
+        const container = document.querySelector('.container');
+        container.innerHTML = ''; // Clear existing content
+
+        products.forEach(product => {
+            const card = document.createElement('div');
+            card.classList.add('cards');
+            card.addEventListener('click', () => {
+                window.location.href = `/product-details/${product.id}`;
+            });
+
+            const img = document.createElement('img');
+            img.src = product.image;
+            img.alt = product.name;
+            card.appendChild(img);
+
+            const h3 = document.createElement('h3');
+            h3.textContent = product.name || 'No name available';
+            card.appendChild(h3);
+
+            const h4 = document.createElement('h4');
+            h4.textContent = product.short_description || 'No description available';
+            card.appendChild(h4);
+
+            const h1 = document.createElement('h1');
+            const price = product.retail_price ?? 1000;
+            h1.textContent = `₹${price}`;
+            card.appendChild(h1);
+
+            container.appendChild(card);
+        });
+    })
+    .catch(error => console.error('Error fetching products:', error));
+
+    </script>
+</body>
+</html>

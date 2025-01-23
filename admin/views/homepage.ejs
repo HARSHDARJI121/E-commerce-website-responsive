@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>E-commerce </title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        /* Sticky Nav Styling */
+        nav {
+            position: sticky;
+            background-color: #ffffff;
+            top: 0;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px;
+            width: 100%;
+            z-index: 100;
+        }
+
+        /* Left Section (Logo and Links) */
+        .left {
+            display: flex;
+            align-items: center;
+        }
+
+        .left img {
+            width: 53px;
+            height: 36px;
+            margin-right: 20px;
+        }
+
+        .left ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .left a {
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: #333;
+            padding: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .left a:hover {
+            color: #ff5722;
+        }
+
+        /* Right Section (Search and Icons) */
+        .right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .right input {
+            font-size: 14px;
+            height: 36px;
+            width: 250px;
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #f9f9f9;
+            color: #696e79;
+            outline: none;
+            transition: width 0.3s ease;
+        }
+
+        .right input:focus {
+            width: 300px;
+            border-color: #ff5722;
+        }
+
+        /* Icons Section */
+        .icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .icons a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            padding: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .icons a:hover {
+            color: #ff5722;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .left ul {
+                display: none;
+            }
+
+            .right input {
+                width: 150px;
+            }
+
+            .icons a {
+                font-size: 14px;
+            }
+        }
+
+        .container img {
+            cursor: pointer;
+            width: 96.5vw;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-bottom: 25px;
+        }
+
+        .section {
+            display: flex;
+            margin: 3px 2px;
+            justify-content: center;
+        }
+
+        .section img {
+            cursor: pointer;
+            width: 48vw;
+            background-size: cover;
+        }
+
+        .section1 img {
+            cursor: pointer;
+            width: 100vw;
+            background-size: cover;
+        }
+
+        .section2 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .section2 img {
+            cursor: pointer;
+            width: 285px;
+            height: 380px;
+        }
+
+        .section3 img {
+            cursor: pointer;
+            width: 100vw;
+            background-size: cover;
+        }
+
+        .section4 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .section4 img {
+            cursor: pointer;
+            width: 290px;
+            height: 345px;
+        }
+
+        .section5 img {
+            cursor: pointer;
+            width: 100vw;
+            background-size: cover;
+        }
+
+        .section6 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .section6 img {
+            cursor: pointer;
+            width: 291px;
+            height: 375px;
+        }
+
+        .section7 img {
+            cursor: pointer;
+            width: 100vw;
+            background-size: cover;
+        }
+
+        .section8 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .section8 img {
+            cursor: pointer;
+            width: 261px;
+            height: 351px;
+        }
+
+        footer {
+            height: 55px;
+            background-color: #f7f7f7;
+            padding-top: 28px;
+            font-size: 14px;
+            color: #696b79;
+            font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            letter-spacing: .3px;
+        }
+
+        footer a {
+            cursor: pointer;
+            color: #696b79;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Section grid adjustments */
+        .box {
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            text-align: center;
+            flex-wrap: wrap; /* Allow items to wrap */
+        }
+
+        .box img {
+            height: 300px;
+            width: 250px;
+            border-radius: 20px;
+        }
+
+        .cards {
+            width: 250px;
+        }
+
+        .cards:hover {
+            border-radius: 20px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            background-color: antiquewhite;
+            color: rgb(0, 0, 0);
+        }
+
+        .cards h3:hover {
+            color: black;
+        }
+
+        .text {
+            box-sizing: border-box;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Section 3 flex adjustment */
+        .sec-3 {
+            display: flex;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        /* Grid responsive layout */
+        @media(max-width:400px) {
+            .box {
+                grid-template-columns: repeat(2, 135px);
+                grid-template-rows: repeat(3, 227px);
+                height: auto;
+            }
+
+            .cards img {
+                width: 120px;
+                height: 150px;
+            }
+
+            .cards h1 {
+                font-size: 20px;
+                color: green;
+            }
+
+            .cards {
+                width: 165px;
+            }
+
+            .text {
+                font-size: xx-small;
+                text-align: center;
+            }
+        }
+
+        /* Mobile responsive for foot section */
+        .foot {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            background-color: black;
+            color: aliceblue;
+            height: 300px;
+            width: 100%;
+            border: 1px solid;
+        }
+
+        .parts {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .parts h1, h3:hover {
+            color: aquamarine;
+        }
+
+        /* Mobile adjustments for .foot */
+        @media (max-width:500px) {
+            .foot {
+                font-size: 10px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+        /* Section 8 - Responsive images */
+.section8 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjusts the number of columns based on screen size */
+    gap: 20px;
+    padding: 20px;
+}
+
+.section8 img {
+    width: 100%;
+    height: auto; /* Ensures images retain their aspect ratio */
+    border-radius: 8px; /* Optional: Add rounded corners for a nice effect */
+    transition: transform 0.3s ease-in-out; /* Adds a hover effect */
+}
+
+.section8 img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Mobile view: Stack the images vertically for smaller screens */
+@media (max-width: 768px) {
+    .section8 {
+        grid-template-columns: 1fr; /* Stack images vertically on small screens */
+    }
+}
+
+/* Larger screens: Can increase the grid layout for larger screens */
+@media (min-width: 1024px) {
+    .section8 {
+        grid-template-columns: repeat(5, 1fr); /* Show 5 columns on larger screens */
+    }
+}
+/* Container for the marquee */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Content to scroll (images) */
+.marquee-content {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
+
+/* Style for the images */
+.marquee-content img {
+  width: 100%;
+  height: auto;
+  margin-right: 20px; /* space between images */
+}
+
+/* Animation for the scrolling effect */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Make the images responsive */
+@media screen and (max-width: 768px) {
+  .marquee-content {
+    width: 50%; /* Adjust based on your design */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .marquee-content img {
+    width: 80%; /* Adjust for mobile */
+  }
+}
+
+    </style>
+
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Store</title>
+        <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    </head>
+    
+    <body>
+        <nav>
+            <div class="left">
+                <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/logo.png" alt="Logo">
+                <ul>
+                    <a href="/menclothes" class="men">Men</a>
+                    <a href="/womenclothes">Women</a>
+                    <a href="/menaccessories">Men Accessories</a>
+                    <a href="/beauty">Beauty</a>
+                    <a href="/womenaccessories">Women Accessories</a>
+                </ul>
+            </div>
+            <div class="right">
+                <input placeholder="Search for products, brands and more" class="desktop-searchBar" value="" data-reactid="904">
+                <div class="icons">
+                    <a href="/profile">Profile</a>
+                    <a href="/Cart">Cart</a>
+                </div>
+            </div>
+        </nav>
+    
+        <div class="studio-section-items"></div>
+    
+        <div class="container">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/ss1.png" alt="Banner">
+        </div>
+    
+        <div class="section">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic1.webp" alt="Image 1">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic2.webp" alt="Image 2">
+        </div>
+    
+        <div class="section1">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic3.webp" alt="Image 3">
+        </div>
+    
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic1.webp" alt="Image 1">
+                <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic2.webp" alt="Image 2">
+                <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic3.webp" alt="Image 3">
+                <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic4.webp" alt="Image 4">
+                <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic5.webp" alt="Image 5">
+            </div>
+        </div>
+    
+        <div class="section3">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic5.webp" alt="Image 6">
+        </div>
+    
+        <div class="section4">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic10.webp" alt="Image 7">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic11.webp" alt="Image 8">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic12.webp" alt="Image 9">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic13.jpg" alt="Image 10">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic14.webp" alt="Image 11">
+        </div>
+    
+        <div class="section5">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic15.webp" alt="Image 12">
+        </div>
+    
+        <div class="section6">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic16.webp" alt="Image 13">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic17.webp" alt="Image 14">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic18.webp" alt="Image 15">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic19.webp" alt="Image 16">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic20.webp" alt="Image 17">
+        </div>
+    
+        <div class="section7">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic21.webp" alt="Image 18">
+        </div>
+    
+        <div class="section8">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic22.webp" alt="Image 19">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic23.webp" alt="Image 20">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic24.webp" alt="Image 21">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic25.webp" alt="Image 22">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic26.webp" alt="Image 23">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic27.jpg" alt="Image 24">
+        </div>
+    
+        <div class="text">
+            <h1>Clothes For Men And Women</h1>
+        </div>
+    
+        <div class="sec-3">
+            <div class="box">
+                <div class="cards" onclick="myshirt()">
+                    <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/kihqz680-0/shirt/g/2/y/m-dark-blue-peter-field-original-imafy9npjdgmknfz.jpeg?q=70">
+                    <h3>Mens black shirt</h3>
+                    <h4>United colors of Benetton</h4>
+                    <h1>Rs 300</h1>
+                </div>
+                <div class="cards">
+                    <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/raincoat/v/p/m/xl-zek-new-multi-rcoat-xl-zeki-original-imah2ss5sdavgtp4.jpeg?q=70">
+                    <h3>Mens Womens Pink Raincoat</h3>
+                    <h4>United colors of Benetton</h4>
+                    <h1>Rs 800</h1>
+                </div>
+                <div class="cards">
+                    <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/q/m/c/l-pf0050-primefield-original-imagpd3prahgts8z.jpeg?q=70">
+                    <h3>Mens Colourful Shirt</h3>
+                    <h4>United colors of Benetton</h4>
+                    <h1>Rs 600</h1>
+                </div>
+                <div class="cards">
+                    <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/kurta/s/b/4/m-women-kurta-renuka-creations-original-imagv3t6fpbz3dht.jpeg?q=70">
+                    <h3>Womens Pink Kurtas</h3>
+                    <h4>United colors of Benetton</h4>
+                    <h1>Rs 1000</h1>
+                </div>
+                <div class="cards">
+                    <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/c/j/w/l-wg-pant-901-sonava-club-original-imagrxcnhgxmhznc.jpeg?q=70">
+                    <h3>Womens SkyBlue Kurtas</h3>
+                    <h4>United colors of Benetton</h4>
+                    <h1>Rs 800</h1>
+                </div>
+            </div>
+        </div>
+    
+        <br><br>
+    
+        <div class="text">
+            <h1>Accessories For Men</h1>
+        </div>
+    
+        <div class="sec-3">
+            <div class="box">
+                <div class="cards">
+                    <img loading="eager" class="DByuf4" alt="EKSA E900PRONCMY Wired Gaming Headset" src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/y/v/e/e900proncmy-eksa-original-imahyfp2phgqnkzk.jpeg?q=70">
+                    <h3>Wired Gaming Headset</h3>
+                    <h4>United colors of Benetton</h4>
+                    <h1>Rs 20,000</h1>
+                </div>
+                <div class="cards">
+                    <img loading="eager" class="DByuf4 IZexXJ jLEJ7H" alt="Boult Z40 Pro with 100H Battery, Quad Mic ENC, Scratch Proof, Rubber Grip Design, 5.3v Bluetooth" src="https://rukminim2.flixcart.com/image/416/416/xif0q/headphone/x/4/9/-original-imagtr2nezygmu4f.jpeg?q=70&crop=false">
+                    <h3>Additional featured Earbuds</h3>
+                    <h4>United colors of Benetton</h4>
+                    <h1>Rs 15,000</h1>
+                </div>
+                <div class="cards">
+                    <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/watch/j/z/a/1-aero-aw-a9-4-slv-aeropostale-men-original-imaghr2d4ha4qzqw.jpeg?q=70">
+                    <h3>Mens Simple And Smooth Watch</h3>
+                    <h4>United colors of Benetton</h4>
+                    <h1>Rs 8,000</h1>
+                </div>
+                <div class="cards">
+                    <img loading="eager" class="DByuf4" alt="OnePlus Nord Buds 3 Pro Truly Wireless Earbuds with 49dB Active Noise Cancellation Bluetooth" src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/l/x/x/nord-buds-3-pro-oneplus-original-imah2ax8jjdyxyv3.jpeg?q=70">
+                    <h3>Wireless Gaming Earbuds</h3>
+                    <h4>United colors of Benetton</h4>
+                    <h1>Rs 5,000</h1>
+                </div>
+                <div class="cards">
+                    <img class="_53J4C-" alt src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/u/r/h/-original-imagyxxfgz52vzqn.jpeg?q=70">
+                    <h3>Smart Men Smart Watches</h3>
+                    <h4>United colors of Benetton</h4>
+                    <h1>Rs 12,000</h1>
+                </div>
+            </div>
+        </div>
+    
+        <br><br>
+    
+        <footer>
+            <div class="foot">
+                <div class="parts">
+                    <h1><u>Online Store</u></h1>
+                    <br>
+                    <h3 onclick="clothes()">Men Clothes</h3>
+                    <br>
+                    <h3 onclick="womenclothes()">Women's Clothes</h3>
+                    <br>
+                    <h3 onclick="access()">Men Accessories</h3>
+                    <br>
+                    <h3 onclick="womenaccess()">Women Accessories</h3>
+                </div>
+                <div class="parts">
+                    <h1><u>Helpful Links</u></h1>
+                    <br>
+                    <h3>Home</h3>
+                    <br>
+                    <h3>Contact</h3>
+                    <br>
+                    <h3>About</h3>
+                </div>
+                <div class="parts">
+                    <h1><u>Partners</u></h1>
+                    <br>
+                    <h3>Zara</h3>
+                    <br>
+                    <h3>Pantaloons</h3>
+                    <br>
+                    <h3>Levis</h3>
+                    <br>
+                    <h3>UBC</h3>
+                    <br>
+                    <h3>+ Many more</h3>
+                </div>
+                <div class="parts">
+                    <h1><u>Address</u></h1>
+                    <br>
+                    <h3>----</h3>
+                    <br>
+                    <h3>----</h3>
+                    <br>
+                    <h3>----</h3>
+                    <br>
+                    <h3>----</h3>
+                </div>
+            </div>
+        </footer>
+    </body>
+    
+    </html>
+    
+<script>
+    function myshirt(){
+        window.location.href="cards.html"
+    }
+    function access(){
+        window.location.href="Accessories.html"
+    }
+    function clothes(){
+        window.location.href="menclothes.html"
+    }
+    function womenclothes(){
+        window.location.href="womenclothes.html"
+    }
+    function womenaccess(){
+        window.location.href="womenAcc.html"
+    }
+    
+
+
+</script>
