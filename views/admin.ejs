@@ -309,66 +309,69 @@ footer {
     });
 
     // Edit product
-    function editProduct(id) {
-      const modal = document.getElementById('editProductModal');
-      const overlay = document.getElementById('modalOverlay');
-      overlay.style.display = 'block';
-      modal.style.display = 'block';
+    // Edit product
+function editProduct(id) {
+  const modal = document.getElementById('editProductModal');
+  const overlay = document.getElementById('modalOverlay');
+  overlay.style.display = 'block';
+  modal.style.display = 'block';
 
-      fetch(`/api/products/${id}`)
-        .then(response => response.json())
-        .then(product => {
-          document.getElementById('editName').value = product.name;
-          document.getElementById('editImage').value = product.image;
-          document.getElementById('editSize').value = product.size;
-          document.getElementById('editRetailPrice').value = product.retail_price;
-          document.getElementById('editDistributionPrice').value = product.distribution_price;
-          document.getElementById('editShortDescription').value = product.short_description;
-          document.getElementById('editCategory').value = product.category;
-        });
+  fetch(`/api/products/${id}`)
+    .then(response => response.json())
+    .then(product => {
+      document.getElementById('editName').value = product.name;
+      document.getElementById('editImage').value = product.image;
+      document.getElementById('editSize').value = product.size;
+      document.getElementById('editRetailPrice').value = product.retail_price;
+      document.getElementById('editDistributionPrice').value = product.distribution_price;
+      document.getElementById('editShortDescription').value = product.short_description;
+      document.getElementById('editCategory').value = product.category;
+    });
 
-      document.querySelector('#editProductForm').onsubmit = async (e) => {
-        e.preventDefault();
-        const updatedProduct = {
-          name: document.getElementById('editName').value,
-          image: document.getElementById('editImage').value,
-          size: document.getElementById('editSize').value,
-          retail_price: document.getElementById('editRetailPrice').value,
-          distribution_price: document.getElementById('editDistributionPrice').value,
-          short_description: document.getElementById('editShortDescription').value,
-          category: document.getElementById('editCategory').value
-        };
+  document.querySelector('#editProductForm').onsubmit = async (e) => {
+    e.preventDefault();
+    const updatedProduct = {
+      name: document.getElementById('editName').value,
+      image: document.getElementById('editImage').value,
+      size: document.getElementById('editSize').value,
+      retail_price: document.getElementById('editRetailPrice').value,
+      distribution_price: document.getElementById('editDistributionPrice').value,
+      short_description: document.getElementById('editShortDescription').value,
+      category: document.getElementById('editCategory').value
+    };
 
-        const response = await fetch(`/api/products/${id}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(updatedProduct)
-        });
+    // Send PUT request to the e-commerce API
+    const response = await fetch(`https://ecommerce-website.com/api/products/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updatedProduct)
+    });
 
-        if (response.ok) {
-          alert('Product updated successfully');
-          loadProducts(); // Refresh product list
-          modal.style.display = 'none';
-          overlay.style.display = 'none';
-        } else {
-          alert('Error updating product');
-        }
-      };
+    if (response.ok) {
+      alert('Product updated successfully');
+      loadProducts(); // Refresh product list
+      modal.style.display = 'none';
+      overlay.style.display = 'none';
+    } else {
+      alert('Error updating product');
     }
+  };
+}
+
 
     // Delete product
-    async function deleteProduct(id) {
-      const response = await fetch(`/api/products/${id}`, {
-        method: 'DELETE',
-      });
+async function deleteProduct(id) {
+  const response = await fetch(`https://ecommerce-website.com/api/products/${id}`, {
+    method: 'DELETE',
+  });
 
-      if (response.ok) {
-        alert('Product deleted successfully');
-        loadProducts(); // Refresh product list
-      } else {
-        alert('Error deleting product');
-      }
-    }
+  if (response.ok) {
+    alert('Product deleted successfully');
+    loadProducts(); // Refresh product list
+  } else {
+    alert('Error deleting product');
+  }
+}
 
     // Close the modal when the overlay is clicked
     document.getElementById('modalOverlay').onclick = () => {

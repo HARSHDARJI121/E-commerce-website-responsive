@@ -24,7 +24,7 @@
 
     /* Cart Table Styling */
     table {
-      width: 80%;
+      width: 90%;
       margin: 20px auto;
       border-collapse: collapse;
       background-color: #fff;
@@ -51,6 +51,9 @@
 
     td img {
       border-radius: 5px;
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
     }
 
     tbody tr:hover {
@@ -59,13 +62,7 @@
 
     /* Price & Quantity Formatting */
     td {
-      font-size: 1.2rem;
-    }
-
-    td img {
-      width: 50px;
-      height: 50px;
-      object-fit: cover;
+      font-size: 1rem;
     }
 
     .quantity-control {
@@ -87,7 +84,7 @@
     .quantity-control input {
       width: 50px;
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1rem;
       border: 1px solid #ccc;
       padding: 5px;
       border-radius: 5px;
@@ -110,7 +107,7 @@
     /* Total Section */
     h3 {
       text-align: right;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       color: #333;
       margin-top: 20px;
       margin-right: 30px;
@@ -120,7 +117,7 @@
       display: inline-block;
       text-decoration: none;
       padding: 10px 20px;
-      margin: 20px 0;
+      margin: 20px auto;
       background-color: #28a745;
       color: white;
       border-radius: 5px;
@@ -144,42 +141,114 @@
       margin-top: 50px;
     }
 
-    /* Mobile responsiveness */
-    @media (max-width: 768px) {
-      table {
-        width: 95%;
-      }
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
 
-      h1 {
-        font-size: 2rem;
-      }
+  th, td {
+    padding: 10px;
+  }
 
-      td {
-        font-size: 1rem;
-      }
+  h1 {
+    font-size: 2rem;
+  }
 
-      h3 {
-        font-size: 1.5rem;
-        margin-right: 20px;
-      }
+  h3 {
+    font-size: 1.5rem;
+    margin-right: 15px;
+  }
 
-      a {
-        font-size: 1rem;
-      }
-    }
+  a {
+    font-size: 1rem;
+    width: 90%;
+    text-align: center;
+    padding: 10px 15px;
+  }
 
-  </style>
-</head>
-<!DOCTYPE html>
-<html lang="en">
+  .quantity-control {
+    flex-direction: row;
+    gap: 5px;
+  }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Cart</title>
-  <style>
-    /* Your existing styles go here */
-    /* ... */
+  .quantity-control button {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    border-spacing: 0;
+  }
+
+  th, td {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+  }
+
+  th {
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  td {
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 0.9rem;
+  }
+
+  td img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+  }
+
+  .quantity-control {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .quantity-control button {
+    margin: 0;
+    padding: 8px;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  a {
+    font-size: 0.9rem;
+    width: 90%;
+    padding: 10px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  p {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
   </style>
 </head>
 
@@ -201,7 +270,7 @@
     <tbody>
       <% cart.forEach(item => { %>
       <tr data-product-id="<%= item.productId %>" data-size="<%= item.size %>">
-        <td><img src="<%= item.image %>" alt="<%= item.name %>" width="50" height="50"></td>
+        <td><img src="<%= item.image %>" alt="<%= item.name %>"></td>
         <td><%= item.size %></td>
         <td>₹<%= item.price %></td>
         <td>
@@ -224,72 +293,6 @@
   <% } else { %>
   <p>Your cart is empty.</p>
   <% } %>
-
-  <script>
-    document.addEventListener("DOMContentLoaded"), function () {
-      // Retrieve cart data from server-side (passed as JSON)
-      let cart = '<%- JSON.stringify(cart) %>';
-
-      // Function to update the cart in localStorage and re-render the total
-      function updateCart() {
-        localStorage.setItem('cart', JSON.stringify(cart));
-        const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-        document.querySelector('h3').textContent = `Total: ₹${totalPrice}`;
-      }
-
-      // Quantity increment functionality
-      document.querySelectorAll('.increment').forEach(button => {
-        button.addEventListener('click', function (event) {
-          const row = event.target.closest('tr');
-          const productId = row.getAttribute('data-product-id');
-          const size = row.getAttribute('data-size');
-          const item = cart.find(i => i.productId === productId && i.size === size);
-
-          if (item) {
-            item.quantity++;
-            row.querySelector('.quantity-input').value = item.quantity;
-            updateCart();
-          }
-        });
-      });
-
-      // Quantity decrement functionality
-      document.querySelectorAll('.decrement').forEach(button => {
-        button.addEventListener('click', function (event) {
-          const row = event.target.closest('tr');
-          const productId = row.getAttribute('data-product-id');
-          const size = row.getAttribute('data-size');
-          const item = cart.find(i => i.productId === productId && i.size === size);
-
-          if (item && item.quantity > 1) {
-            item.quantity--;
-            row.querySelector('.quantity-input').value = item.quantity;
-            updateCart();
-          }
-        });
-          // Remove product from cart
-          document.querySelectorAll('.remove-btn').forEach(button => {
-        button.addEventListener('click', function (event) {
-          const row = event.target.closest('tr');
-          const productId = row.getAttribute('data-product-id');
-          const size = row.getAttribute('data-size');
-          const itemIndex = cart.findIndex(i => i.productId === productId && i.size === size);
-
-          if (itemIndex !== -1) {
-            // Remove item from cart array
-            cart.splice(itemIndex, 1);
-            row.remove();
-            updateCart(); // Update cart and re-render total
-          }
-        });
-      });
-
-      // Update the cart in localStorage when the page loads
-      updateCart();
-    });
-  }
-  </script>
-
 </body>
 
 </html>

@@ -15,276 +15,372 @@
 
         /* Sticky Nav Styling */
         nav {
-            position: sticky;
-            background-color: #ffffff;
-            top: 0;
-            height: 70px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px;
-            width: 100%;
-            z-index: 100;
-        }
+    position: sticky;
+    background-color: #ffffff;
+    top: 0;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px;
+    width: 100%;
+    z-index: 100;
+}
 
-        /* Left Section (Logo and Links) */
-        .left {
-            display: flex;
-            align-items: center;
-        }
+/* Hamburger Menu */
+.menu-toggle {
+    display: none;
+}
 
-        .left img {
-            width: 53px;
-            height: 36px;
-            margin-right: 20px;
-        }
+/* Left Section (Logo and Links) */
+.left {
+    display: flex;
+    align-items: center;
+}
 
-        .left ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
+.left img {
+    width: 53px;
+    height: 36px;
+    margin-right: 20px;
+}
 
-        .left a {
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: 500;
-            font-size: 14px;
-            letter-spacing: 1px;
-            color: #333;
-            padding: 0 10px;
-            transition: color 0.3s ease;
-        }
+.left ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
 
-        .left a:hover {
-            color: #ff5722;
-        }
+.left a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #333;
+    padding: 0 10px;
+    transition: color 0.3s ease;
+}
 
-        /* Right Section (Search and Icons) */
-        .right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
+.left a:hover {
+    color: #ff5722;
+}
 
-        .right input {
-            font-size: 14px;
-            height: 36px;
-            width: 250px;
-            padding: 8px 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background: #f9f9f9;
-            color: #696e79;
-            outline: none;
-            transition: width 0.3s ease;
-        }
+/* Right Section (Search, Cart, Profile Icons) */
+.right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
-        .right input:focus {
-            width: 300px;
-            border-color: #ff5722;
-        }
+.right input {
+    font-size: 14px;
+    height: 36px;
+    width: 250px;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #f9f9f9;
+    color: #696e79;
+    outline: none;
+    transition: width 0.3s ease;
+}
 
-        /* Icons Section */
-        .icons {
-            display: flex;
-            gap: 20px;
-        }
+.right input:focus {
+    width: 300px;
+    border-color: #ff5722;
+}
 
-        .icons a {
-            text-decoration: none;
-            color: #333;
-            font-size: 16px;
-            padding: 5px;
-            transition: color 0.3s ease;
-        }
+.icons {
+    display: flex;
+    gap: 20px;
+    margin-right: 20px;
+}
 
-        .icons a:hover {
-            color: #ff5722;
-        }
+.icons a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
 
-        /* Grid Layout for Cards */
-        .clothes {
-            padding: 40px 0;
-            background-color: #f7f7f7;
-        }
+.icons a:hover {
+    color: #ff5722;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    nav {
+        padding: 0 10px; /* Reduce padding for smaller screens */
+    }
 
-        /* Card Styles */
-        .cards {
-            position: relative;
-            width: 23%; /* Ensures 4 items per row */
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .left ul {
+        display: none; /* Hide links on smaller screens */
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px;
+        flex-direction: column;
+        padding: 10px;
+        text-align: center;
+    }
 
-        /* Image Styling for Cards */
-        .cards img {
-            width: 100%; /* Makes the image cover the full width of the card */
-            height: 250px; /* Fixed height for all images */
-            object-fit: cover; /* Ensures the image maintains aspect ratio and covers the area */
-            transition: transform 0.3s ease;
-        }
+    .left ul li {
+        margin: 10px 0;
+    }
 
-        /* Hover Effects */
-        .cards:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-        }
+    .left a {
+        font-size: 16px; /* Increase font size on mobile */
+    }
 
-        .cards:hover img {
-            transform: scale(1.05);
-        }
+    /* Toggle Menu Button (Hamburger) */
+    .menu-toggle {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        color: #333;
+    }
 
-        /* Text Styles */
-        h3, h4, h1 {
-            font-family: 'Arial', sans-serif;
-            margin: 10px;
-        }
+    /* Mobile navigation - display links when menu is active */
+    .left.active ul {
+        display: flex;
+    }
 
-        h3 {
-            font-size: 1.2rem;
-            color: #333;
-            font-weight: 600;
-        }
+    .right {
+        display: flex; /* Show right section on mobile */
+        gap: 15px;
+    }
 
-        h4 {
-            font-size: 1rem;
-            color: #777;
-            font-weight: 500;
-        }
+    .right input {
+        display: none; /* Hide search input on mobile */
+    }
 
-        h1 {
-            font-size: 1.5rem;
-            color: #e91e63;
-            font-weight: 700;
-        }
+    .icons a {
+        font-size: 18px; /* Increase icon size */
+    }
+    .section{
+        width: 100%;
+        margin: auto;
+    }
+}
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .cards {
-                width: 48%; /* 2 items per row */
-            }
-        }
+/* Tablet & Small Device Adjustments */
+@media (max-width: 500px) {
+    .right input {
+        width: 150px;
+        font-size: 12px;
+    }
 
-        @media (max-width: 480px) {
-            .cards {
-                width: 100%; /* Full-width for small screens */
-            }
-        }
+    .icons a {
+        font-size: 14px;
+    }
 
-        /* Card hover button */
-        .cards::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+    .right {
+        gap: 15px;
+    }
 
-        .cards:hover::after {
-            opacity: 1;
-        }
+    .menu-toggle {
+        font-size: 22px;
+    }
+}
 
-        h3, h4, h1 {
-            position: relative;
-            z-index: 2;
-        }
+/* Add Cart and Profile Icons */
+.icons a.cart, .icons a.profile {
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
 
-        /* Button Style */
-        .cards:hover h1 {
-            color: #fff;
-        }
+.icons a.cart:hover, .icons a.profile:hover {
+    transform: scale(1.1);
+}
 
-        /* Styling for Hovered Cards */
-        .cards:hover h3 {
-            color: #fff;
-        }
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .cards:hover h4 {
-            color: #fff;
-        }
+/* Clothes Section */
+.clothes {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Container */
+.container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 10px;
+}
+
+/* Cards */
+.cards {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.cards:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Image */
+.cards img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Card Content */
+.cards h3 {
+    font-size: 1.2rem;
+    margin: 10px;
+    color: #333;
+}
+
+.cards h4 {
+    font-size: 1rem;
+    margin: 0 10px 10px;
+    color: #666;
+}
+
+.cards h1 {
+    font-size: 1.5rem;
+    margin: 10px;
+    color: #e63946;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .cards h3 {
+        font-size: 1rem;
+    }
+
+    .cards h4 {
+        font-size: 0.9rem;
+    }
+
+    .cards h1 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cards img {
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .cards h3, .cards h4, .cards h1 {
+        margin: 5px;
+    }
+}
+
     </style>
 </head>
 
 <body>
     <nav>
         <div class="left">
-            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/logo.png" alt="Logo">
+            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/logo.png" alt="">
             <ul>
-                <li><a href="/menclothes">Men</a></li>
-                <li><a href="/womenclothes">Women</a></li>
-                <li><a href="/menaccessories">Men Accessories</a></li>
-                <li><a href="/beauty">Beauty</a></li>
-                <li><a href="/womenaccessories">Women Accessories</a></li>
+                <li><a href="/menclothes">MEN</a></li>
+                <li><a href="/womenclothes">WOMEN</a></li>
+                <li><a href="/menaccessories">MEN ACCESSORIES</a></li>
+                <li><a href="/womenaccessories">WOMEN ACCESSORIES</a></li>
+                <li><a href="/beauty">BEAUTY</a></li>
+
             </ul>
         </div>
         <div class="right">
-            <input type="text" placeholder="Search for products, brands, and more">
+            <input class="search" type="text" placeholder="Search...">
             <div class="icons">
-                <a href="/">Home</a>
-                <a href="/profile">Profile</a>
-                <a href="/Cart">Cart</a>
+                <a href="/cart">CART</a>
+                <a href="/profile">PROFILE</a>
             </div>
         </div>
+        <!-- Hamburger Icon for mobile -->
+        <span class="menu-toggle">&#9776;</span>
     </nav>
+    
+
     <div class="clothes">
         <div class="container"></div>
     </div>
 
     <script>
-        fetch(`/api/products?category=Beauty`) // Change 'Women' to the relevant category
-    .then(response => response.json())
-    .then(products => {
-        const container = document.querySelector('.container');
-        container.innerHTML = ''; // Clear existing content
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLeft = document.querySelector('.left');
 
-        products.forEach(product => {
-            const card = document.createElement('div');
-            card.classList.add('cards');
-            card.addEventListener('click', () => {
-                window.location.href = `/product-details/${product.id}`;
-            });
-
-            const img = document.createElement('img');
-            img.src = product.image;
-            img.alt = product.name;
-            card.appendChild(img);
-
-            const h3 = document.createElement('h3');
-            h3.textContent = product.name || 'No name available';
-            card.appendChild(h3);
-
-            const h4 = document.createElement('h4');
-            h4.textContent = product.short_description || 'No description available';
-            card.appendChild(h4);
-
-            const h1 = document.createElement('h1');
-            const price = product.retail_price ?? 1000;
-            h1.textContent = `₹${price}`;
-            card.appendChild(h1);
-
-            container.appendChild(card);
+        menuToggle.addEventListener('click', () => {
+            navLeft.classList.toggle('active');
         });
-    })
-    .catch(error => console.error('Error fetching products:', error));
+
+        fetch('/api/products?category=beauty')
+  .then(response => {
+    console.log('Response status:', response.status);  // Log the response status
+    return response.json();
+  })
+  .then(products => {
+    console.log('Fetched products:', products);  // Log the fetched products
+    const container = document.querySelector('.container');
+    container.innerHTML = ''; // Clear existing content
+
+    if (products.error) {
+      container.innerHTML = `<p>${products.error}</p>`; // Show error message if no products found
+      return;
+    }
+
+    products.forEach(product => {
+      const card = document.createElement('div');
+      card.classList.add('cards');
+      card.addEventListener('click', () => {
+        window.location.href = `/product-details/${product._id}`; // Use MongoDB `_id` field
+      });
+
+      const img = document.createElement('img');
+      img.src = product.image;
+      img.alt = product.name;
+      card.appendChild(img);
+
+      const h3 = document.createElement('h3');
+      h3.textContent = product.name || 'No name available';
+      card.appendChild(h3);
+
+      const h4 = document.createElement('h4');
+      h4.textContent = product.short_description || 'No description available';
+      card.appendChild(h4);
+
+      const h1 = document.createElement('h1');
+      const price = product.retail_price ?? 1000;
+      h1.textContent = `₹${price}`;
+      card.appendChild(h1);
+
+      container.appendChild(card);
+    });
+  })
+  .catch(error => {
+    console.error('Error fetching products:', error);
+  });
 
     </script>
 </body>
+
 </html>

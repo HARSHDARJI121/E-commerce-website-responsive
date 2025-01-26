@@ -1,28 +1,31 @@
-// Import necessary modules
+const mongoose = require('mongoose');
 const express = require('express');
-const mysql = require('mysql');
-const path = require('path');
-const cors = require('cors');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+const path = require('path');
 
+// Initialize the app
 const app = express();
-const port = 3000;
+const port = 3000; // Change to your desired port
 
-// Database connection
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root', // Replace with your MySQL username
-  password: 'Harsh@5489', // Replace with your MySQL password
-  database: 'ecommerce', // Replace with your database name
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/ecommerce', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('Database connection failed:', err));
+
+// Define Product schema and model
+const productSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  image: { type: String, required: true },
+  size: { type: String, required: true },
+  retail_price: { type: Number, required: true },
+  distribution_price: { type: Number, required: true },
+  short_description: { type: String, required: true },
+  category: { type: String, required: true },
+  created_at: { type: Date, default: Date.now }
 });
 
-db.connect(err => {
-  if (err) {
-    console.error('Database connection failed:', err.stack);
-    return;
-  }
-  console.log('Connected to database');
-});
+const Product = mongoose.model('Product', productSchema);
 
 // Middleware setup
 app.use(cors());
@@ -40,97 +43,86 @@ app.get('/admin', (req, res) => {
 });
 
 // Route to fetch all products
-app.get('/api/products', (req, res) => {
-  const query = 'SELECT * FROM products';
-  db.query(query, (err, results) => {
-    if (err) {
-      console.error('Error fetching products:', err);
-      res.status(500).json({ error: 'Error fetching products' });
-      return;
-    }
-    res.json(results);
-  });
+app.get('/api/products', async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.json(products);
+  } catch (err) {
+    console.error('Error fetching products:', err);
+    res.status(500).json({ error: 'Error fetching products' });
+  }
 });
 
 // Route to add a new product
-app.post('/api/products', (req, res) => {
+app.post('/api/products', async (req, res) => {
   const { name, image, size, retail_price, distribution_price, short_description, category } = req.body;
 
   if (!name || !image || !size || !retail_price || !distribution_price || !short_description || !category) {
-    res.status(400).json({ error: 'All fields are required' });
-    return;
+    return res.status(400).json({ error: 'All fields are required' });
   }
 
-  const query = `
-    INSERT INTO products (name, image, size, retail_price, distribution_price, short_description, category, created_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, NOW())
-  `;
+  const product = new Product({
+    name,
+    image,
+    size,
+    retail_price,
+    distribution_price,
+    short_description,
+    category
+  });
 
-  db.query(
-    query,
-    [name, image, size, retail_price, distribution_price, short_description, category],
-    (err, result) => {
-      if (err) {
-        console.error('Error adding product:', err);
-        res.status(500).json({ error: 'Error adding product' });
-        return;
-      }
-      res.status(201).json({ message: 'Product added successfully', productId: result.insertId });
-    }
-  );
+  try {
+    const newProduct = await product.save();
+    res.status(201).json({ message: 'Product added successfully', productId: newProduct._id });
+  } catch (err) {
+    console.error('Error adding product:', err);
+    res.status(500).json({ error: 'Error adding product' });
+  }
 });
 
 // Route to update an existing product
-app.put('/api/products/:id', (req, res) => {
+app.put('/api/products/:id', async (req, res) => {
   const { name, image, size, retail_price, distribution_price, short_description, category } = req.body;
   const productId = req.params.id;
 
   if (!name || !image || !size || !retail_price || !distribution_price || !short_description || !category) {
-    res.status(400).json({ error: 'All fields are required' });
-    return;
+    return res.status(400).json({ error: 'All fields are required' });
   }
 
-  const query = `
-    INSERT INTO products (name, image, size, retail_price, distribution_price, short_description, category)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
-`;
+  try {
+    const updatedProduct = await Product.findByIdAndUpdate(
+      productId,
+      { name, image, size, retail_price, distribution_price, short_description, category },
+      { new: true } // To return the updated document
+    );
 
-
-  db.query(
-    query,
-    [name, image, size, retail_price, distribution_price, short_description, category, productId],
-    (err, result) => {
-      if (err) {
-        console.error('Error updating product:', err);
-        res.status(500).json({ error: 'Error updating product' });
-        return;
-      }
-      if (result.affectedRows === 0) {
-        res.status(404).json({ error: 'Product not found' });
-        return;
-      }
-      res.status(200).json({ message: 'Product updated successfully' });
+    if (!updatedProduct) {
+      return res.status(404).json({ error: 'Product not found' });
     }
-  );
+
+    res.status(200).json({ message: 'Product updated successfully' });
+  } catch (err) {
+    console.error('Error updating product:', err);
+    res.status(500).json({ error: 'Error updating product' });
+  }
 });
 
 // Route to delete a product
-app.delete('/api/products/:id', (req, res) => {
+app.delete('/api/products/:id', async (req, res) => {
   const productId = req.params.id;
-  const query = 'DELETE FROM products WHERE id = ?';
 
-  db.query(query, [productId], (err, result) => {
-    if (err) {
-      console.error('Error deleting product:', err);
-      res.status(500).json({ error: 'Error deleting product' });
-      return;
+  try {
+    const deletedProduct = await Product.findByIdAndDelete(productId);
+
+    if (!deletedProduct) {
+      return res.status(404).json({ error: 'Product not found' });
     }
-    if (result.affectedRows === 0) {
-      res.status(404).json({ error: 'Product not found' });
-      return;
-    }
+
     res.status(200).json({ message: 'Product deleted successfully' });
-  });
+  } catch (err) {
+    console.error('Error deleting product:', err);
+    res.status(500).json({ error: 'Error deleting product' });
+  }
 });
 
 // Start the server

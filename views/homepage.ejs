@@ -15,6 +15,22 @@
 html {
     scroll-behavior: smooth;
 }
+html, body {
+    overflow-y: scroll; /* Enable scrolling */
+    scrollbar-width: thin; /* Optional: make the scrollbar thinner (for Firefox) */
+    scrollbar-color: transparent transparent; /* Optional: hide the scrollbar (for Firefox) */
+}
+
+/* For Webkit browsers (Chrome, Safari) */
+body::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
 
 body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -170,7 +186,7 @@ nav {
         font-size: 18px; /* Increase icon size */
     }
     .section{
-        width: 50%;
+        width: 100%;
         margin: auto;
     }
 }
@@ -221,11 +237,12 @@ nav {
 .marquee {
     display: inline-flex;
     animation: scroll 20s linear infinite;
+    height: 250px;
 }
 
 .marquee img {
-    width: 250px;  /* Default image width */
-    height: 150px; /* Default image height */
+    width: 150px;  /* Default image width */
+    height: 250px; /* Default image height */
     margin: 0 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -251,7 +268,7 @@ nav {
 @media (max-width: 768px) {
     .marquee img {
         width: 180px;  /* Adjust image width for mobile */
-        height: 120px; /* Adjust image height for mobile */
+        height: 100px; /* Adjust image height for mobile */
     }
 
     .marquee-container {
@@ -262,11 +279,13 @@ nav {
 /* Tablet (max-width: 500px) */
 @media (max-width: 500px) {
     .marquee img {
+        margin-top: 20px;
         width: 150px;  /* Adjust image width for smaller tablet screens */
-        height: 200px; /* Adjust image height for smaller tablet screens */
+        height: 190px; /* Adjust image height for smaller tablet screens */
     }
 
     .marquee-container {
+        margin-top: 20px;
         margin: 5px 0; /* Further reduce margin for small tablets */
     }
 }
@@ -289,13 +308,13 @@ nav {
 
 .section img {
     cursor: pointer;
-    width: 100%;
+    width: 50%;
     background-size: cover;
 }
 
 .section1 img {
     cursor: pointer;
-    width: 100vw;
+    width: 100%;
     background-size: cover;
 }
 
@@ -392,7 +411,9 @@ footer a {
 }
 
 .cards {
-    width: 250px;
+    height: 300px;
+    width: 200px;
+    margin: auto;
 }
 
 .cards:hover {
@@ -414,37 +435,202 @@ footer a {
 }
 
 /* Section 3 flex adjustment */
+/* Container for the sections */
 .sec-3 {
     display: flex;
-    justify-content: center;
-    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 20px;
 }
 
-/* Grid responsive layout */
-@media (max-width: 400px) {
+.box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Styling for each product card */
+.cards {
+
+    object-fit: cover;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cards img {
+    height: 200px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Title and Price styling */
+.cards h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.cards h4 {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+}
+
+.cards h1 {
+    font-size: 1.4rem;
+    color: #f44336;
+    margin: 10px 0;
+}
+
+/* Hover effects */
+.cards:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cards:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Styling for the section title */
+.text h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+}
+
+
+
+/* Container for product cards */
+.box {
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+/* Styling for individual product cards */
+.cards {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    height: 450px;
+    margin-left: 100px;
+    transition: transform 0.3s ease;
+}
+
+/* Image inside each card */
+.cards img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Card hover effect */
+.cards:hover {
+    transform: scale(1.05);
+}
+
+/* Heading and pricing inside cards */
+.cards h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.cards h4 {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0;
+}
+
+.cards h1 {
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+
+/* Mobile and tablet responsiveness */
+@media (max-width: 1024px) {
     .box {
-        grid-template-columns: repeat(2, 135px);
-        grid-template-rows: repeat(3, 227px);
-        height: auto;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Slightly larger columns for tablets */
     }
 
-    .cards img {
-        width: 120px;
-        height: 150px;
+    .cards h3 {
+        font-size: 16px;
+    }
+
+    .cards h4 {
+        font-size: 12px;
     }
 
     .cards h1 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .box {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust for smaller screens */
+    }
+
+    .cards h3 {
+        font-size: 14px;
+    }
+
+    .cards h4 {
+        font-size: 10px;
+    }
+
+    .cards h1 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .box {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
+
+    .cards h3 {
+        font-size: 14px;
+    }
+
+    .cards h4 {
+        font-size: 10px;
+    }
+
+    .cards h1 {
+        font-size: 16px;
+    }
+
+    /* Optional: Make text more readable on very small screens */
+    .text h1 {
         font-size: 20px;
-        color: green;
-    }
-
-    .cards {
-        width: 165px;
-    }
-
-    .text {
-        font-size: xx-small;
         text-align: center;
+    }
+    .cards{
+        margin: auto;
     }
 }
 
@@ -481,7 +667,17 @@ footer a {
         gap: 20px;
     }
 }
-
+.section8{
+    height: 300px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.section8 img{
+    height: 300px;
+    width: 200px;
+}
 
 
    </style>
@@ -492,11 +688,11 @@ footer a {
                 <div class="left">
                     <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/logo.png" alt="">
                     <ul>
-                        <li><a href="">MEN</a></li>
-                        <li><a href="">WOMEN</a></li>
-                        <li><a href="#">MEN ACCESSORIES</a></li>
-                        <li><a href="#">WOMEN ACCESSORIES</a></li>
-                        <li><a href="#">BEAUTY</a></li>
+                        <li><a href="/menclothes">MEN</a></li>
+                        <li><a href="/womenclothes">WOMEN</a></li>
+                        <li><a href="/menaccessories">MEN ACCESSORIES</a></li>
+                        <li><a href="/womenaccessories">WOMEN ACCESSORIES</a></li>
+                        <li><a href="/beauty">BEAUTY</a></li>
 
                     </ul>
                 </div>
@@ -544,17 +740,7 @@ footer a {
                 <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic20.webp" alt="">
             </div>
         </div>
-        <div class="section7">
-            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic21.webp" alt="">
-        </div>
-        <div class="section8">
-            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic22.webp" alt="">
-            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic23.webp" alt="">
-            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic24.webp" alt="">
-            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic25.webp" alt="">
-            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic26.webp" alt="">
-            <img src="https://raw.githubusercontent.com/ZeroOctave/ZeroOctave-Javascript-Projects/main/assets/Images/myntraclone/pic27.jpg" alt="">
-        </div>              
+       
     <div class="text">
         <h1>Clothes For Men And  Women</h1>
     </div>

@@ -3,196 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><%= product.name %> - Product Details</title>
     <style>
         /* General Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
 
-body {
-  background-color: #f4f4f4;
-  color: #333;
-  padding: 20px;
-  font-size: 16px;
-  line-height: 1.6;
-}
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
 
-/* Product Details Section */
-.product-details {
-  display: flex;
-  justify-content: space-between;
-  margin: 50px 0;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  padding: 30px;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
+        /* Product Details Section */
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            margin: 50px 0;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-.product-image {
-  flex: 1;
-  text-align: center;
-}
+        .product-image {
+            flex: 1;
+            text-align: center;
+        }
 
-.product-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
 
-.product-info {
-  flex: 1.5;
-  padding-left: 30px;
-}
+        .product-info {
+            flex: 1.5;
+            padding-left: 30px;
+        }
 
-.product-info h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
-}
+        .product-info h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
 
-.product-info p {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-  color: #666;
-}
+        .product-info p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #666;
+        }
 
-.product-info select {
-  padding: 10px;
-  font-size: 1rem;
-  margin: 15px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  color: #555;
-}
+        .product-info select {
+            padding: 10px;
+            font-size: 1rem;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            color: #555;
+        }
 
-.product-info select:focus {
-  outline: none;
-  border-color: #008cba;
-}
+        .product-info select:focus {
+            outline: none;
+            border-color: #008cba;
+        }
 
-.product-info button {
-  background-color: #008cba;
-  color: white;
-  font-size: 1.1rem;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+        .product-info button {
+            background-color: #008cba;
+            color: white;
+            font-size: 1.1rem;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-.product-info button:hover {
-  background-color: #006a8c;
-}
+        .product-info button:hover {
+            background-color: #006a8c;
+        }
 
-.product-info input[type="hidden"] {
-  display: none;
-}
+        .product-info input[type="hidden"] {
+            display: none;
+        }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .product-details {
-    flex-direction: column;
-    padding: 20px;
-  }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .product-details {
+                flex-direction: column;
+                padding: 20px;
+            }
 
-  .product-info {
-    padding-left: 0;
-  }
+            .product-info {
+                padding-left: 0;
+            }
 
-  .product-info h1 {
-    font-size: 1.8rem;
-  }
+            .product-info h1 {
+                font-size: 1.8rem;
+            }
 
-  .product-info p {
-    font-size: 1rem;
-  }
+            .product-info p {
+                font-size: 1rem;
+            }
 
-  .product-info select,
-  .product-info button {
-    width: 100%;
-    margin-top: 10px;
-  }
-}
+            .product-info select,
+            .product-info button {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
 
-/* Product Not Found Section */
-.product-details h1 {
-  font-size: 2rem;
-  color: #ff4c4c;
-}
+        /* Product Not Found Section */
+        .product-details h1 {
+            font-size: 2rem;
+            color: #ff4c4c;
+        }
 
-.product-details p {
-  font-size: 1.2rem;
-  color: #777;
-}
+        .product-details p {
+            font-size: 1.2rem;
+            color: #777;
+        }
 
-/* Hover Effects */
-.product-image img {
-  transition: transform 0.3s ease;
-}
+        /* Hover Effects */
+        .product-image img {
+            transition: transform 0.3s ease;
+        }
 
-.product-image img:hover {
-  transform: scale(1.05);
-}
+        .product-image img:hover {
+            transform: scale(1.05);
+        }
 
-/* Form Styles */
-form {
-  display: inline-block;
-  width: 100%;
-}
-
+        /* Form Styles */
+        form {
+            display: inline-block;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
-    <!-- product-details.ejs -->
-<div class="product-details">
-    <% if (product) { %>
-      <div class="product-image">
-        <img src="<%= product.image %>" alt="<%= product.name %>">
-      </div>
-      <div class="product-info">
-        <h1><%= product.name %></h1>
-        <p><strong>Price:</strong> ₹<%= product.retail_price %></p>
-  
-        <!-- Short Description -->
-        <% if (product.short_description) { %>
-          <p><strong>Description:</strong> <%= product.short_description %></p>
+    <div class="product-details">
+        <% if (product) { %>
+            <div class="product-image">
+                <img src="<%= product.image %>" alt="<%= product.name %>">
+            </div>
+            <div class="product-info">
+                <h1><%= product.name %></h1>
+                <p><strong>Price:</strong> ₹<%= product.retail_price %></p>
+
+                <% if (product.short_description) { %>
+                    <p><strong>Description:</strong> <%= product.short_description %></p>
+                <% } %>
+
+                <label for="size">Choose Size:</label>
+                <select id="size" name="size">
+                    <% if (product.size) { %>
+                        <% product.size.split(',').forEach(size => { %>
+                            <option value="<%= size %>"><%= size %></option>
+                        <% }) %>
+                    <% } else { %>
+                        <option value="" disabled>No sizes available</option>
+                    <% } %>
+                </select>
+
+                <!-- Add to Cart Form -->
+                <form action="/add-to-cart" method="POST">
+                    <input type="hidden" name="productId" value="<%= product._id %>">
+                    <input type="hidden" name="name" value="<%= product.name %>">
+                    <input type="hidden" name="image" value="<%= product.image %>">
+                    <input type="hidden" name="retail_price" value="<%= product.retail_price %>">
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+        <% } else { %>
+            <h1>Product not found</h1>
+            <p>Sorry, the product details could not be loaded.</p>
         <% } %>
-  
-        <label for="size">Choose Size:</label>
-        <select id="size" name="size">
-          <% if (product.size) { %>
-            <% product.size.split(',').forEach(size => { %>
-              <option value="<%= size %>"><%= size %></option>
-            <% }) %>
-          <% } else { %>
-            <option value="" disabled>No sizes available</option>
-          <% } %>
-        </select>
-  
-        <!-- Add to Cart Form -->
-        <form action="/add-to-cart" method="POST">
-          <input type="hidden" name="productId" value="<%= product.id %>">
-          <input type="hidden" name="name" value="<%= product.name %>">
-          <input type="hidden" name="image" value="<%= product.image %>">
-          <input type="hidden" name="retail_price" value="<%= product.retail_price %>">
-          <button type="submit">Add to Cart</button>
-        </form>
-      </div>
-    <% } else { %>
-      <h1>Product not found</h1>
-      <p>Sorry, the product details could not be loaded.</p>
-    <% } %>
-  </div>
+    </div>
 </body>
 </html>
-  
